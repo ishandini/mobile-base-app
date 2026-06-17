@@ -3,12 +3,6 @@ name: feature-developer
 description: Implements a complete feature following Clean Architecture — datasource, repository, use case, BLoC, and page — with correct injectable/freezed/auto_route annotations. Use for new features requiring a full vertical slice. Provide the feature name, what it does, and the API/Firebase contract. The agent follows all project conventions exactly.
 model: sonnet
 tools:
-  - mcp__filesystem__read_file
-  - mcp__filesystem__read_multiple_files
-  - mcp__filesystem__read_text_file
-  - mcp__filesystem__list_directory
-  - mcp__filesystem__directory_tree
-  - mcp__filesystem__search_files
   - Read
   - Write
   - Edit
