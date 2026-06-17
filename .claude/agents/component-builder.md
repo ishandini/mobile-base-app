@@ -147,7 +147,26 @@ Never use `StatefulWidget` just for controllers.
 
 1. **Fetch Figma component** — `get_design_context` for full prop tree, `get_screenshot` for visual, `get_variable_defs` for token mapping.
 2. **Read similar existing component** — find the closest widget in `lib/core/widgets/` and read it to match the code structure and import style.
-3. **Read `asset_const.dart`** — add new `AssetConst.*` constants for any new icons/images. If a Figma value has no matching constant, add it to `theme_style.dart` following the even-number rule above. Note that asset files themselves must be placed manually.
+3. **Read `asset_const.dart`** — add new `AssetConst.*` constants for any new icons/images. If a Figma value has no matching constant, add it to `theme_style.dart` following the even-number rule above.
+
+3a. **SVG icon extraction** — for every vector/icon node found in the design context:
+
+   **If `get_design_context` returns extractable SVG data for the node:**
+   - Write the SVG content to `assets/icons/<icon_name>.svg`
+   - Register the path in `pubspec.yaml` under `flutter: assets:` (append, do not duplicate)
+   - Add `static const String iconName = 'assets/icons/<icon_name>.svg';` to `asset_const.dart`
+   - Reference in widget as `SvgPicture.asset(AssetConst.iconName)`
+
+   **If the node is a Figma component instance or has no extractable SVG data:**
+   - Still add the `AssetConst` constant as a placeholder string
+   - Leave a comment in the widget at the usage site:
+     ```dart
+     // TODO: export SVG from Figma and place at assets/icons/<icon_name>.svg
+     SvgPicture.asset(AssetConst.iconName)
+     ```
+
+   **Only apply to SVG/vector nodes.** PNG or raster image fills are never written — note them in the manual assets list in the output summary.
+
 4. **Write the widget** to `lib/core/widgets/<component_name>.dart`
    - Import order: `dart:` → `package:flutter/` → other packages → relative imports
    - `const` constructor with `super.key`
@@ -169,9 +188,11 @@ Never use `StatefulWidget` just for controllers.
 ✅ Created: lib/core/widgets/<component_name>.dart
 ✅ Created: widgetbook/lib/components/<category>/<component_name>_stories.dart
 ✅ Updated: widgetbook/lib/main.dart
-✅ Updated: lib/core/constants/asset_const.dart  (if assets added)
-✅ Updated: lib/core/services/theme/theme_style.dart  (if constants added)
-⚠️  Assets to place manually: [list SVG/PNG file paths]
+✅ Updated: lib/core/constants/asset_const.dart        (if assets added)
+✅ Updated: lib/core/services/theme/theme_style.dart   (if constants added)
+✅ Written: assets/icons/<icon_name>.svg               (SVGs with extractable data)
+⚠️  Export from Figma manually: [list icons with TODO comments — SVG data unavailable]
+⚠️  Place raster assets manually: [list PNG/image file paths]
 ```
 
 ---
