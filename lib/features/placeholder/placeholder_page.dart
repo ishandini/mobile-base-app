@@ -9,7 +9,14 @@ class PlaceholderPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('App Template — Replace with your first screen'),
+        child: Text(
+          'Mobile Base App',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.5,
+          ),
+        ),
       ),
     );
   }
