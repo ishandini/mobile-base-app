@@ -123,7 +123,7 @@ Segments:
 
 | Key | en value |
 |-----|----------|
-| `auth_landing_page_lbl_headline` | `"Build Your Future with Prime Lands !"` |
+| `auth_landing_page_lbl_headline` | `"Your app headline here"` |
 | `auth_landing_page_lbl_subtitle` | `"Discover premium properties across Sri Lanka"` |
 | `auth_landing_page_btn_continue_as_guest` | `"Continue as a Guest"` |
 | `auth_landing_page_btn_login` | `"Login"` |
@@ -143,7 +143,7 @@ Segments:
 
 | Key | en value |
 |-----|----------|
-| `auth_login_page_lbl_headline` | `"Welcome to Prime Lands"` |
+| `auth_login_page_lbl_headline` | `"Welcome to [App Name]"` |
 | `auth_login_page_lbl_subtitle` | `"Your trusted partner in premium property investments across Sri Lanka."` |
 | `auth_login_page_lbl_email` | `"E-mail address"` |
 | `auth_login_page_hint_email` | `"E-mail address"` |
@@ -213,7 +213,7 @@ Segments:
 
 | Key | en value |
 |-----|----------|
-| `welcome_home_page_lbl_headline` | `"A Smarter Way to Earn Money with Prime Lands"` |
+| `welcome_home_page_lbl_headline` | `"Your home page headline here"` |
 | `welcome_home_page_lbl_earn_prefix` | `"Earn up to"` |
 | `welcome_home_page_lbl_earn_description` | `"by referring customers and completing\nsuccessful sales."` |
 | `welcome_home_page_btn_become_agent` | `"Become a virtual sales agent"` |
@@ -390,7 +390,7 @@ Used inside `PropertyTile` — not tied to a specific screen.
 | `property_detail_btn_maps_apple` | `"Apple Maps"` |
 | `property_detail_btn_maps_cancel` | `"Cancel"` |
 | `property_detail_snack_shared` | `"Thanks for sharing!"` |
-| `property_detail_share_body` | `"Spotted a great property on Prime Lands that aligns well with your preferences."` |
+| `property_detail_share_body` | `"Your share message body here."` |
 | `property_detail_btn_refer_to_friends` | `"Refer to friends"` |
 | `property_detail_btn_buy` | `"Buy"` |
 | `property_detail_btn_take_a_tour` | `"Take a Tour"` |
@@ -621,10 +621,10 @@ Shared keys used across multiple screens.
 | Key | en value |
 |-----|----------|
 | `about_us_page_lbl_title` | `"About Us"` |
-| `about_us_page_lbl_prime_lands` | `"PRIME LANDS"` |
-| `about_us_page_lbl_prime_lands_desc` | `"Prime Lands (Pvt) Ltd is one of Sri Lanka's most trusted real estate companies, with over 200,000 satisfied customers. We are committed to helping people find their dream homes and investment properties."` |
+| `about_us_page_lbl_prime_lands` | `"[COMPANY NAME]"` |
+| `about_us_page_lbl_prime_lands_desc` | `"Your company description here."` |
 | `about_us_page_lbl_history` | `"HISTORY"` |
-| `about_us_page_lbl_history_desc` | `"Founded over 29 years ago with just 4 employees, Prime Lands has grown into Sri Lanka's leading property developer, with a presence across the island."` |
+| `about_us_page_lbl_history_desc` | `"Your company history here."` |
 | `about_us_page_lbl_quality_policy` | `"QUALITY POLICY"` |
 | `about_us_page_lbl_quality_policy_desc` | `"We are dedicated to delivering the highest standards of customer satisfaction, trust, and environmental responsibility in every project we undertake."` |
 

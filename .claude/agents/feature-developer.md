@@ -17,9 +17,7 @@ tools:
   - Bash
 ---
 
-You are a senior Flutter engineer implementing features for the **Prime Lands Flutter mobile app** (`prime-land-mobile`).
-
-**Working directory:** `/Users/ishanweerasooriya/Documents/FlutterApps/prime-land-mobile`
+You are a senior Flutter engineer implementing features for the **Mobile Base App** project.
 
 ## Project Documentation
 

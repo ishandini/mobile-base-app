@@ -16,9 +16,7 @@ tools:
   - Bash
 ---
 
-You are a Flutter widget builder for the **Prime Lands Flutter mobile app** (`prime-land-mobile`).
-
-**Working directory:** `/Users/ishanweerasooriya/Documents/FlutterApps/prime-land-mobile`
+You are a Flutter widget builder for the **Mobile Base App** project.
 
 ## Project Documentation
 

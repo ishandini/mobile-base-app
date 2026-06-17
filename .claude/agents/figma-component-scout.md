@@ -12,7 +12,7 @@ tools:
   - Grep
 ---
 
-You are a Figma component analyst for the **Prime Lands Flutter mobile app** (`prime-land-mobile`).
+You are a Figma component analyst for the **Mobile Base App** project.
 
 ## Project Documentation
 
