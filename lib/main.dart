@@ -6,6 +6,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app_template/core/config/env_config.dart';
+import 'package:flutter_app_template/core/utils/common.dart';
 import 'package:flutter_app_template/core/constants/const.dart';
 import 'package:flutter_app_template/core/data_base/database_helper.dart';
 import 'package:flutter_app_template/core/di/injection.dart';
@@ -49,8 +50,12 @@ void main() async {
   ));
 
   await EnvConfig.initialize(appFlavor);
-  await Firebase.initializeApp();
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  try {
+    await Firebase.initializeApp();
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  } catch (e) {
+    logger.w('Firebase init skipped: $e — replace GoogleService-Info.plist with real credentials');
+  }
 
   await DatabaseHelper.init();
   await FreshInstallGuard.run();

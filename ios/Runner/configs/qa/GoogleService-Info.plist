@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!-- Replace this file with your real GoogleService-Info.plist for the PROD scheme. See SETUP.md. -->
+<!-- Replace this file with your real GoogleService-Info.plist for the QA scheme. See SETUP.md. -->
 <plist version="1.0">
 <dict>
   <key>CLIENT_ID</key><string>YOUR_CLIENT_ID.apps.googleusercontent.com</string>
@@ -8,9 +8,9 @@
   <key>API_KEY</key><string>YOUR_API_KEY</string>
   <key>GCM_SENDER_ID</key><string>000000000000</string>
   <key>PLIST_VERSION</key><string>1</string>
-  <key>BUNDLE_ID</key><string>com.yourcompany.app</string>
-  <key>PROJECT_ID</key><string>your-project-id</string>
-  <key>STORAGE_BUCKET</key><string>your-project-id.appspot.com</string>
+  <key>BUNDLE_ID</key><string>com.yourcompany.app.qa</string>
+  <key>PROJECT_ID</key><string>your-project-id-qa</string>
+  <key>STORAGE_BUCKET</key><string>your-project-id-qa.appspot.com</string>
   <key>IS_ADS_ENABLED</key><false/>
   <key>IS_ANALYTICS_ENABLED</key><false/>
   <key>IS_APPINVITE_ENABLED</key><true/>
