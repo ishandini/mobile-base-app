@@ -28,7 +28,7 @@ the matching `.env.*` file via `flutter_dotenv` before DI is bootstrapped.
 
 | | Version |
 |-|---------|
-| Flutter | 3.35.4 (stable) |
+| Flutter | 3.41.9 (stable) |
 | Dart | 3.9.2 |
 | Min SDK | `^3.5.3` |
 
