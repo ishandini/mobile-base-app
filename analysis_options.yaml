@@ -1,0 +1,35 @@
+# This file configures the analyzer, which statically analyzes Dart code to
+# check for errors, warnings, and lints.
+#
+# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
+# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
+# invoked from the command line by running `flutter analyze`.
+
+# The following line activates a set of recommended lints for Flutter apps,
+# packages, and plugins designed to encourage good coding practices.
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - lib/**/*.g.dart
+    - lib/**/*.freezed.dart
+    - lib/**/*.gr.dart
+  errors:
+    # False positive: @JsonKey/@Default on freezed factory constructor parameters
+    # is the intended freezed pattern. The code generator handles these correctly.
+    invalid_annotation_target: ignore
+
+linter:
+  rules:
+    prefer_single_quotes: true
+    avoid_print: true
+    prefer_const_constructors: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_final_fields: true
+    avoid_unnecessary_containers: true
+    use_key_in_widget_constructors: true
+    prefer_final_locals: true
+    unnecessary_this: true
+    avoid_redundant_argument_values: true
+    empty_catches: false
+    sort_constructors_first: false

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "additionalDirectories": [
+      "/Users/ishan/Documents/Outsource/prime-land-mobile/lib",
+      "/Users/ishanweerasooriya/Documents/FlutterApps/edge-prime-mobile-app"
+    ]
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true
+  }
+}

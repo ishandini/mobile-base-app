@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "figma-desktop": {
+      "type": "http",
+      "url": "http://127.0.0.1:3845/mcp"
+    },
+    "filesystem": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/ishanweerasooriya/Documents/FlutterApps/prime-land-mobile",
+        "/Users/ishanweerasooriya/Documents/FlutterApps/edge-prime-mobile-app"
+      ],
+      "env": {}
+    }
+  }
+}

@@ -1,0 +1,188 @@
+name: Claude PR Review
+
+# Triggers:
+#   1. Automatically on every PR push (opened / new commits / reopened)
+#   2. On-demand: comment /review on any open PR
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read        # checkout repo
+  pull-requests: write  # post review comments
+  issues: write         # post on issue_comment trigger
+  id-token: write       # required by claude-code-action to fetch OIDC token
+
+jobs:
+  claude-review:
+    name: Claude Code Review
+    runs-on: ubuntu-latest
+
+    # Run on every PR push, OR when someone comments /review on a PR
+    if: |
+      github.event_name == 'pull_request' ||
+      (
+        github.event_name == 'issue_comment' &&
+        github.event.issue.pull_request != null &&
+        startsWith(github.event.comment.body, '/review')
+      )
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history so git diff against main works
+
+      # Two project files contain local machine paths that don't exist on the runner:
+      #   .mcp.json              — Figma desktop + filesystem MCP servers
+      #   .claude/settings.json  — additionalDirectories with absolute local paths
+      # Claude Code validates both at startup. Clear them so it boots cleanly.
+      # This only mutates the runner's working copy; local dev is unaffected.
+      - name: Clear local machine paths for CI
+        run: |
+          echo '{"mcpServers":{}}' > .mcp.json
+          echo '{"permissions":{"additionalDirectories":[]}}' > .claude/settings.json
+
+      - name: Run Claude PR Review
+        uses: anthropics/claude-code-action@beta
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # Restrict to built-in file tools only — prevents the action from
+          # trying to connect to local MCP servers defined in .mcp.json,
+          # which reference absolute paths that don't exist on the runner.
+          allowed_tools: "Read,Glob,Grep,Bash"
+          direct_prompt: |
+            You are a Flutter code reviewer for the **Prime Lands mobile app** (`prime-land-mobile`).
+            Your job is to review the changed Dart files in this pull request and post a structured review comment.
+            DO NOT modify any source files — findings only.
+
+            ## Step 1 — Load project rules
+
+            Read these files (they are checked into the repo):
+            - `.claude/agents/code-reviewer.md`  ← your exact review checklist and output format
+            - `.claude/docs/design-system.md`
+            - `.claude/docs/design-system-input-components.md`
+            - `.claude/docs/design-system-core-components.md`
+            - `.claude/docs/design-system-feature-components.md`
+            - `.claude/docs/architecture.md`
+            - `.claude/docs/conventions.md`
+            - `.claude/docs/di-registry.md`
+            - `.claude/docs/navigation.md`
+            - `.claude/docs/networking.md`
+
+            ## Step 2 — Identify changed Dart files
+
+            Run:
+            ```
+            git diff --name-only origin/main...HEAD -- '*.dart'
+            ```
+
+            If there are no changed Dart files, post a comment saying "No Dart files changed — nothing to review." and stop.
+
+            ## Step 3 — Read each changed file
+
+            Read every Dart file returned in Step 2.
+            Also read any related test files if they exist.
+
+            ## Step 4 — Apply the full checklist
+
+            Check every changed file against ALL items in `.claude/agents/code-reviewer.md`, including:
+
+            **Design system tokens (Critical)**
+            - No `Color(0x...)`, `Colors.red`, etc. (exception: `Colors.transparent`)
+            - No raw `TextStyle(fontSize: ...)` — must use `context.textStyle(...)`
+            - No hardcoded spacing like `SizedBox(height: 12)` — must use `AppSpace.s12`
+            - No hardcoded radius like `BorderRadius.circular(30)` — must use `AppRadius.r30`
+            - No raw `EdgeInsets.all(16)` — must use `AppPadding.p16`
+            - No computed tokens like `AppSpace.s8 + 4` or `AppRadius.r24 + 2`
+
+            **SVG rendering**
+            - Color tint via `ColorFilter.mode(color, BlendMode.srcIn)`
+            - Inside `Row`/`Column`: `fit: BoxFit.scaleDown`
+
+            **Clean Architecture boundaries**
+            - Domain layer: no Flutter imports, no DI annotations, no data imports
+            - Data layer: no presentation imports
+            - BLoC/page: imports domain only, never data directly
+
+            **BLoC patterns**
+            - Event and state files are standalone (own `part` declarations)
+            - No `sl<>()` in BLoC constructors
+            - `result.fold(...)` used (not `.isRight()` / `.getOrElse()`)
+            - Feature BLoC annotated `@injectable` (not `@lazySingleton`)
+            - `copyWith` used in emit calls
+
+            **Injectable annotations**
+            - DataSource impl: `@Injectable(as: Interface)`
+            - Repository impl: `@Injectable(as: Interface)`
+            - Use case: `@lazySingleton`
+
+            **Naming conventions**
+            - Files: `snake_case.dart`
+            - Pages → `PascalCasePage`, BLoC → `PascalCaseBloc`, Entity → `PascalCaseEntity`,
+              Model → `PascalCaseModel`, UseCase → `VerbNounUseCase`
+
+            **Widget patterns**
+            - No `StatefulWidget` just for controllers — use `HookWidget`
+            - `const` constructors where possible
+            - `super.key` pattern (not `Key? key` + `: super(key: key)`)
+            - Custom tap targets: `GestureDetector(behavior: HitTestBehavior.opaque)`
+
+            **Navigation & scaffold**
+            - Auth screens: `AuthBasePage`; post-login screens: `BasePage`
+            - Pinned bottom CTAs wrapped in `PageBottomBar`
+            - Routes use `CustomRoute` with correct transition and 250 ms duration
+
+            **API & networking**
+            - List endpoints: `PgResponse.from(raw).dataList(...)`
+            - Typed envelope endpoints: `safeApiCall(...)`
+            - No raw `json.decode` outside model `fromJson`
+            - Repository returns `ResultFuture`; wraps errors in `Left(AppFailure(...))`
+
+            **Localization**
+            - No hardcoded English strings in UI — all via `localizations.translate('key')`
+
+            **Reuse over duplication**
+            - For every new widget added inside a feature folder: glob `lib/core/widgets/` and check if an equivalent already exists by purpose (not just name). Flag if yes.
+            - For every new free function or static method: check `lib/core/utils/helper.dart`, `extension.dart`, `common.dart`, `property_type_helper.dart` for equivalent logic. Flag if yes.
+            - For every new utility class: check `lib/core/utils/` for an existing equivalent.
+
+            ## Step 5 — Post the review
+
+            Post a single GitHub PR review comment using EXACTLY this format:
+
+            ```
+            ## Claude Code Review
+
+            ### ✅ Passes
+            - [list what looks correct]
+
+            ### ❌ Issues Found
+
+            #### Critical (must fix before merge)
+            | File | Line | Issue | Fix |
+            |------|------|-------|-----|
+            | `path/file.dart` | 42 | description | suggested fix |
+
+            #### Warnings (should fix)
+            | File | Line | Issue | Fix |
+            |------|------|-------|-----|
+
+            #### Info (nice to fix)
+            | File | Line | Issue | Fix |
+            |------|------|-------|-----|
+
+            ### Reuse Opportunities
+            | New code in PR | Existing alternative | Recommendation |
+            |---|---|---|
+            | example | lib/core/widgets/example.dart | Reuse existing |
+
+            _(omit this table if no duplication found)_
+
+            ### Summary
+            X critical · Y warnings · Z info · N reuse opportunities
+            ```
+
+            If there are zero issues, say so clearly in the Passes section and give the PR a green light.

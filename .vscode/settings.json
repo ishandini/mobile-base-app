@@ -1,0 +1,12 @@
+{
+    "dart.flutterSdkPath": "/Users/ishanweerasooriya/fvm/versions/3.41.9",
+    "dart.previewFlutterUiGuides": true,
+    "[dart]": {
+        "editor.defaultFormatter": "Dart-Code.dart-code",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+    },
+    "vsicons.associations.fileDefault.file": null
+}
