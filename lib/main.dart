@@ -60,6 +60,7 @@ void main() async {
   await DatabaseHelper.init();
   await FreshInstallGuard.run();
   await configureDependencies();
+  FlutterNativeSplash.remove();
 
   runApp(
     RequestsInspector(
