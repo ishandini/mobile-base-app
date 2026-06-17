@@ -6,18 +6,16 @@ part of 'language_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LanguageModelImpl _$$LanguageModelImplFromJson(Map<String, dynamic> json) =>
-    _$LanguageModelImpl(
+_LanguageModel _$LanguageModelFromJson(Map<String, dynamic> json) =>
+    _LanguageModel(
       translations: (json['translations'] as List<dynamic>?)
           ?.map((e) => TranslationModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       syncDateTime: json['sync_date_time'] as String?,
     );
 
-Map<String, dynamic> _$$LanguageModelImplToJson(_$LanguageModelImpl instance) =>
+Map<String, dynamic> _$LanguageModelToJson(_LanguageModel instance) =>
     <String, dynamic>{
-      if (instance.translations?.map((e) => e.toJson()).toList()
-          case final value?)
-        'translations': value,
-      if (instance.syncDateTime case final value?) 'sync_date_time': value,
+      'translations': ?instance.translations?.map((e) => e.toJson()).toList(),
+      'sync_date_time': ?instance.syncDateTime,
     };

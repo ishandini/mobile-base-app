@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,280 +9,230 @@ part of 'color_event.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$ColorEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() sync,
-    required TResult Function() load,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? sync,
-    TResult? Function()? load,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? sync,
-    TResult Function()? load,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SyncColorsEvt value) sync,
-    required TResult Function(LoadColorsEvt value) load,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SyncColorsEvt value)? sync,
-    TResult? Function(LoadColorsEvt value)? load,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SyncColorsEvt value)? sync,
-    TResult Function(LoadColorsEvt value)? load,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ColorEvent);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ColorEvent()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ColorEventCopyWith<$Res> {
-  factory $ColorEventCopyWith(
-          ColorEvent value, $Res Function(ColorEvent) then) =
-      _$ColorEventCopyWithImpl<$Res, ColorEvent>;
+class $ColorEventCopyWith<$Res>  {
+$ColorEventCopyWith(ColorEvent _, $Res Function(ColorEvent) __);
 }
 
-/// @nodoc
-class _$ColorEventCopyWithImpl<$Res, $Val extends ColorEvent>
-    implements $ColorEventCopyWith<$Res> {
-  _$ColorEventCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [ColorEvent].
+extension ColorEventPatterns on ColorEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of ColorEvent
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SyncColorsEvt value)?  sync,TResult Function( LoadColorsEvt value)?  load,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case SyncColorsEvt() when sync != null:
+return sync(_that);case LoadColorsEvt() when load != null:
+return load(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SyncColorsEvt value)  sync,required TResult Function( LoadColorsEvt value)  load,}){
+final _that = this;
+switch (_that) {
+case SyncColorsEvt():
+return sync(_that);case LoadColorsEvt():
+return load(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SyncColorsEvt value)?  sync,TResult? Function( LoadColorsEvt value)?  load,}){
+final _that = this;
+switch (_that) {
+case SyncColorsEvt() when sync != null:
+return sync(_that);case LoadColorsEvt() when load != null:
+return load(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  sync,TResult Function()?  load,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case SyncColorsEvt() when sync != null:
+return sync();case LoadColorsEvt() when load != null:
+return load();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  sync,required TResult Function()  load,}) {final _that = this;
+switch (_that) {
+case SyncColorsEvt():
+return sync();case LoadColorsEvt():
+return load();}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  sync,TResult? Function()?  load,}) {final _that = this;
+switch (_that) {
+case SyncColorsEvt() when sync != null:
+return sync();case LoadColorsEvt() when load != null:
+return load();case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$SyncColorsEvtImplCopyWith<$Res> {
-  factory _$$SyncColorsEvtImplCopyWith(
-          _$SyncColorsEvtImpl value, $Res Function(_$SyncColorsEvtImpl) then) =
-      __$$SyncColorsEvtImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$SyncColorsEvtImplCopyWithImpl<$Res>
-    extends _$ColorEventCopyWithImpl<$Res, _$SyncColorsEvtImpl>
-    implements _$$SyncColorsEvtImplCopyWith<$Res> {
-  __$$SyncColorsEvtImplCopyWithImpl(
-      _$SyncColorsEvtImpl _value, $Res Function(_$SyncColorsEvtImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ColorEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$SyncColorsEvtImpl implements SyncColorsEvt {
-  const _$SyncColorsEvtImpl();
-
-  @override
-  String toString() {
-    return 'ColorEvent.sync()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SyncColorsEvtImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() sync,
-    required TResult Function() load,
-  }) {
-    return sync();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? sync,
-    TResult? Function()? load,
-  }) {
-    return sync?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? sync,
-    TResult Function()? load,
-    required TResult orElse(),
-  }) {
-    if (sync != null) {
-      return sync();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SyncColorsEvt value) sync,
-    required TResult Function(LoadColorsEvt value) load,
-  }) {
-    return sync(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SyncColorsEvt value)? sync,
-    TResult? Function(LoadColorsEvt value)? load,
-  }) {
-    return sync?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SyncColorsEvt value)? sync,
-    TResult Function(LoadColorsEvt value)? load,
-    required TResult orElse(),
-  }) {
-    if (sync != null) {
-      return sync(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SyncColorsEvt implements ColorEvent {
-  const factory SyncColorsEvt() = _$SyncColorsEvtImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadColorsEvtImplCopyWith<$Res> {
-  factory _$$LoadColorsEvtImplCopyWith(
-          _$LoadColorsEvtImpl value, $Res Function(_$LoadColorsEvtImpl) then) =
-      __$$LoadColorsEvtImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadColorsEvtImplCopyWithImpl<$Res>
-    extends _$ColorEventCopyWithImpl<$Res, _$LoadColorsEvtImpl>
-    implements _$$LoadColorsEvtImplCopyWith<$Res> {
-  __$$LoadColorsEvtImplCopyWithImpl(
-      _$LoadColorsEvtImpl _value, $Res Function(_$LoadColorsEvtImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ColorEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$LoadColorsEvtImpl implements LoadColorsEvt {
-  const _$LoadColorsEvtImpl();
 
-  @override
-  String toString() {
-    return 'ColorEvent.load()';
-  }
+class SyncColorsEvt implements ColorEvent {
+  const SyncColorsEvt();
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadColorsEvtImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() sync,
-    required TResult Function() load,
-  }) {
-    return load();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? sync,
-    TResult? Function()? load,
-  }) {
-    return load?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? sync,
-    TResult Function()? load,
-    required TResult orElse(),
-  }) {
-    if (load != null) {
-      return load();
-    }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SyncColorsEvt value) sync,
-    required TResult Function(LoadColorsEvt value) load,
-  }) {
-    return load(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SyncColorsEvt value)? sync,
-    TResult? Function(LoadColorsEvt value)? load,
-  }) {
-    return load?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SyncColorsEvt value)? sync,
-    TResult Function(LoadColorsEvt value)? load,
-    required TResult orElse(),
-  }) {
-    if (load != null) {
-      return load(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SyncColorsEvt);
 }
 
-abstract class LoadColorsEvt implements ColorEvent {
-  const factory LoadColorsEvt() = _$LoadColorsEvtImpl;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ColorEvent.sync()';
 }
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class LoadColorsEvt implements ColorEvent {
+  const LoadColorsEvt();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadColorsEvt);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ColorEvent.load()';
+}
+
+
+}
+
+
+
+
+// dart format on

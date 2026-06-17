@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,1048 +9,520 @@ part of 'translation_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$TranslationState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String currentLanguageCode) languageLoaded,
-    required TResult Function(String currentLanguageCode) languageChanged,
-    required TResult Function(bool updated, String currentLanguageCode)
-        syncSuccess,
-    required TResult Function(String message) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String currentLanguageCode)? languageLoaded,
-    TResult? Function(String currentLanguageCode)? languageChanged,
-    TResult? Function(bool updated, String currentLanguageCode)? syncSuccess,
-    TResult? Function(String message)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String currentLanguageCode)? languageLoaded,
-    TResult Function(String currentLanguageCode)? languageChanged,
-    TResult Function(bool updated, String currentLanguageCode)? syncSuccess,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TranslationInitial value) initial,
-    required TResult Function(TranslationLoading value) loading,
-    required TResult Function(TranslationLanguageLoaded value) languageLoaded,
-    required TResult Function(TranslationLanguageChanged value) languageChanged,
-    required TResult Function(TranslationSyncSuccess value) syncSuccess,
-    required TResult Function(TranslationError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TranslationInitial value)? initial,
-    TResult? Function(TranslationLoading value)? loading,
-    TResult? Function(TranslationLanguageLoaded value)? languageLoaded,
-    TResult? Function(TranslationLanguageChanged value)? languageChanged,
-    TResult? Function(TranslationSyncSuccess value)? syncSuccess,
-    TResult? Function(TranslationError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TranslationInitial value)? initial,
-    TResult Function(TranslationLoading value)? loading,
-    TResult Function(TranslationLanguageLoaded value)? languageLoaded,
-    TResult Function(TranslationLanguageChanged value)? languageChanged,
-    TResult Function(TranslationSyncSuccess value)? syncSuccess,
-    TResult Function(TranslationError value)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TranslationState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'TranslationState()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $TranslationStateCopyWith<$Res> {
-  factory $TranslationStateCopyWith(
-          TranslationState value, $Res Function(TranslationState) then) =
-      _$TranslationStateCopyWithImpl<$Res, TranslationState>;
+class $TranslationStateCopyWith<$Res>  {
+$TranslationStateCopyWith(TranslationState _, $Res Function(TranslationState) __);
 }
 
-/// @nodoc
-class _$TranslationStateCopyWithImpl<$Res, $Val extends TranslationState>
-    implements $TranslationStateCopyWith<$Res> {
-  _$TranslationStateCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [TranslationState].
+extension TranslationStatePatterns on TranslationState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of TranslationState
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( TranslationInitial value)?  initial,TResult Function( TranslationLoading value)?  loading,TResult Function( TranslationLanguageLoaded value)?  languageLoaded,TResult Function( TranslationLanguageChanged value)?  languageChanged,TResult Function( TranslationSyncSuccess value)?  syncSuccess,TResult Function( TranslationError value)?  error,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case TranslationInitial() when initial != null:
+return initial(_that);case TranslationLoading() when loading != null:
+return loading(_that);case TranslationLanguageLoaded() when languageLoaded != null:
+return languageLoaded(_that);case TranslationLanguageChanged() when languageChanged != null:
+return languageChanged(_that);case TranslationSyncSuccess() when syncSuccess != null:
+return syncSuccess(_that);case TranslationError() when error != null:
+return error(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( TranslationInitial value)  initial,required TResult Function( TranslationLoading value)  loading,required TResult Function( TranslationLanguageLoaded value)  languageLoaded,required TResult Function( TranslationLanguageChanged value)  languageChanged,required TResult Function( TranslationSyncSuccess value)  syncSuccess,required TResult Function( TranslationError value)  error,}){
+final _that = this;
+switch (_that) {
+case TranslationInitial():
+return initial(_that);case TranslationLoading():
+return loading(_that);case TranslationLanguageLoaded():
+return languageLoaded(_that);case TranslationLanguageChanged():
+return languageChanged(_that);case TranslationSyncSuccess():
+return syncSuccess(_that);case TranslationError():
+return error(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( TranslationInitial value)?  initial,TResult? Function( TranslationLoading value)?  loading,TResult? Function( TranslationLanguageLoaded value)?  languageLoaded,TResult? Function( TranslationLanguageChanged value)?  languageChanged,TResult? Function( TranslationSyncSuccess value)?  syncSuccess,TResult? Function( TranslationError value)?  error,}){
+final _that = this;
+switch (_that) {
+case TranslationInitial() when initial != null:
+return initial(_that);case TranslationLoading() when loading != null:
+return loading(_that);case TranslationLanguageLoaded() when languageLoaded != null:
+return languageLoaded(_that);case TranslationLanguageChanged() when languageChanged != null:
+return languageChanged(_that);case TranslationSyncSuccess() when syncSuccess != null:
+return syncSuccess(_that);case TranslationError() when error != null:
+return error(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( String currentLanguageCode)?  languageLoaded,TResult Function( String currentLanguageCode)?  languageChanged,TResult Function( bool updated,  String currentLanguageCode)?  syncSuccess,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case TranslationInitial() when initial != null:
+return initial();case TranslationLoading() when loading != null:
+return loading();case TranslationLanguageLoaded() when languageLoaded != null:
+return languageLoaded(_that.currentLanguageCode);case TranslationLanguageChanged() when languageChanged != null:
+return languageChanged(_that.currentLanguageCode);case TranslationSyncSuccess() when syncSuccess != null:
+return syncSuccess(_that.updated,_that.currentLanguageCode);case TranslationError() when error != null:
+return error(_that.message);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( String currentLanguageCode)  languageLoaded,required TResult Function( String currentLanguageCode)  languageChanged,required TResult Function( bool updated,  String currentLanguageCode)  syncSuccess,required TResult Function( String message)  error,}) {final _that = this;
+switch (_that) {
+case TranslationInitial():
+return initial();case TranslationLoading():
+return loading();case TranslationLanguageLoaded():
+return languageLoaded(_that.currentLanguageCode);case TranslationLanguageChanged():
+return languageChanged(_that.currentLanguageCode);case TranslationSyncSuccess():
+return syncSuccess(_that.updated,_that.currentLanguageCode);case TranslationError():
+return error(_that.message);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( String currentLanguageCode)?  languageLoaded,TResult? Function( String currentLanguageCode)?  languageChanged,TResult? Function( bool updated,  String currentLanguageCode)?  syncSuccess,TResult? Function( String message)?  error,}) {final _that = this;
+switch (_that) {
+case TranslationInitial() when initial != null:
+return initial();case TranslationLoading() when loading != null:
+return loading();case TranslationLanguageLoaded() when languageLoaded != null:
+return languageLoaded(_that.currentLanguageCode);case TranslationLanguageChanged() when languageChanged != null:
+return languageChanged(_that.currentLanguageCode);case TranslationSyncSuccess() when syncSuccess != null:
+return syncSuccess(_that.updated,_that.currentLanguageCode);case TranslationError() when error != null:
+return error(_that.message);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$TranslationInitialImplCopyWith<$Res> {
-  factory _$$TranslationInitialImplCopyWith(_$TranslationInitialImpl value,
-          $Res Function(_$TranslationInitialImpl) then) =
-      __$$TranslationInitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$TranslationInitialImplCopyWithImpl<$Res>
-    extends _$TranslationStateCopyWithImpl<$Res, _$TranslationInitialImpl>
-    implements _$$TranslationInitialImplCopyWith<$Res> {
-  __$$TranslationInitialImplCopyWithImpl(_$TranslationInitialImpl _value,
-      $Res Function(_$TranslationInitialImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of TranslationState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$TranslationInitialImpl implements TranslationInitial {
-  const _$TranslationInitialImpl();
-
-  @override
-  String toString() {
-    return 'TranslationState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$TranslationInitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String currentLanguageCode) languageLoaded,
-    required TResult Function(String currentLanguageCode) languageChanged,
-    required TResult Function(bool updated, String currentLanguageCode)
-        syncSuccess,
-    required TResult Function(String message) error,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String currentLanguageCode)? languageLoaded,
-    TResult? Function(String currentLanguageCode)? languageChanged,
-    TResult? Function(bool updated, String currentLanguageCode)? syncSuccess,
-    TResult? Function(String message)? error,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String currentLanguageCode)? languageLoaded,
-    TResult Function(String currentLanguageCode)? languageChanged,
-    TResult Function(bool updated, String currentLanguageCode)? syncSuccess,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TranslationInitial value) initial,
-    required TResult Function(TranslationLoading value) loading,
-    required TResult Function(TranslationLanguageLoaded value) languageLoaded,
-    required TResult Function(TranslationLanguageChanged value) languageChanged,
-    required TResult Function(TranslationSyncSuccess value) syncSuccess,
-    required TResult Function(TranslationError value) error,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TranslationInitial value)? initial,
-    TResult? Function(TranslationLoading value)? loading,
-    TResult? Function(TranslationLanguageLoaded value)? languageLoaded,
-    TResult? Function(TranslationLanguageChanged value)? languageChanged,
-    TResult? Function(TranslationSyncSuccess value)? syncSuccess,
-    TResult? Function(TranslationError value)? error,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TranslationInitial value)? initial,
-    TResult Function(TranslationLoading value)? loading,
-    TResult Function(TranslationLanguageLoaded value)? languageLoaded,
-    TResult Function(TranslationLanguageChanged value)? languageChanged,
-    TResult Function(TranslationSyncSuccess value)? syncSuccess,
-    TResult Function(TranslationError value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class TranslationInitial implements TranslationState {
-  const factory TranslationInitial() = _$TranslationInitialImpl;
-}
-
-/// @nodoc
-abstract class _$$TranslationLoadingImplCopyWith<$Res> {
-  factory _$$TranslationLoadingImplCopyWith(_$TranslationLoadingImpl value,
-          $Res Function(_$TranslationLoadingImpl) then) =
-      __$$TranslationLoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$TranslationLoadingImplCopyWithImpl<$Res>
-    extends _$TranslationStateCopyWithImpl<$Res, _$TranslationLoadingImpl>
-    implements _$$TranslationLoadingImplCopyWith<$Res> {
-  __$$TranslationLoadingImplCopyWithImpl(_$TranslationLoadingImpl _value,
-      $Res Function(_$TranslationLoadingImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of TranslationState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$TranslationLoadingImpl implements TranslationLoading {
-  const _$TranslationLoadingImpl();
 
-  @override
-  String toString() {
-    return 'TranslationState.loading()';
-  }
+class TranslationInitial implements TranslationState {
+  const TranslationInitial();
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$TranslationLoadingImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String currentLanguageCode) languageLoaded,
-    required TResult Function(String currentLanguageCode) languageChanged,
-    required TResult Function(bool updated, String currentLanguageCode)
-        syncSuccess,
-    required TResult Function(String message) error,
-  }) {
-    return loading();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String currentLanguageCode)? languageLoaded,
-    TResult? Function(String currentLanguageCode)? languageChanged,
-    TResult? Function(bool updated, String currentLanguageCode)? syncSuccess,
-    TResult? Function(String message)? error,
-  }) {
-    return loading?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String currentLanguageCode)? languageLoaded,
-    TResult Function(String currentLanguageCode)? languageChanged,
-    TResult Function(bool updated, String currentLanguageCode)? syncSuccess,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TranslationInitial value) initial,
-    required TResult Function(TranslationLoading value) loading,
-    required TResult Function(TranslationLanguageLoaded value) languageLoaded,
-    required TResult Function(TranslationLanguageChanged value) languageChanged,
-    required TResult Function(TranslationSyncSuccess value) syncSuccess,
-    required TResult Function(TranslationError value) error,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TranslationInitial value)? initial,
-    TResult? Function(TranslationLoading value)? loading,
-    TResult? Function(TranslationLanguageLoaded value)? languageLoaded,
-    TResult? Function(TranslationLanguageChanged value)? languageChanged,
-    TResult? Function(TranslationSyncSuccess value)? syncSuccess,
-    TResult? Function(TranslationError value)? error,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TranslationInitial value)? initial,
-    TResult Function(TranslationLoading value)? loading,
-    TResult Function(TranslationLanguageLoaded value)? languageLoaded,
-    TResult Function(TranslationLanguageChanged value)? languageChanged,
-    TResult Function(TranslationSyncSuccess value)? syncSuccess,
-    TResult Function(TranslationError value)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TranslationInitial);
 }
 
-abstract class TranslationLoading implements TranslationState {
-  const factory TranslationLoading() = _$TranslationLoadingImpl;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'TranslationState.initial()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class TranslationLoading implements TranslationState {
+  const TranslationLoading();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TranslationLoading);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'TranslationState.loading()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class TranslationLanguageLoaded implements TranslationState {
+  const TranslationLanguageLoaded({required this.currentLanguageCode});
+  
+
+ final  String currentLanguageCode;
+
+/// Create a copy of TranslationState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TranslationLanguageLoadedCopyWith<TranslationLanguageLoaded> get copyWith => _$TranslationLanguageLoadedCopyWithImpl<TranslationLanguageLoaded>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TranslationLanguageLoaded&&(identical(other.currentLanguageCode, currentLanguageCode) || other.currentLanguageCode == currentLanguageCode));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,currentLanguageCode);
+
+@override
+String toString() {
+  return 'TranslationState.languageLoaded(currentLanguageCode: $currentLanguageCode)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$TranslationLanguageLoadedImplCopyWith<$Res> {
-  factory _$$TranslationLanguageLoadedImplCopyWith(
-          _$TranslationLanguageLoadedImpl value,
-          $Res Function(_$TranslationLanguageLoadedImpl) then) =
-      __$$TranslationLanguageLoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String currentLanguageCode});
+abstract mixin class $TranslationLanguageLoadedCopyWith<$Res> implements $TranslationStateCopyWith<$Res> {
+  factory $TranslationLanguageLoadedCopyWith(TranslationLanguageLoaded value, $Res Function(TranslationLanguageLoaded) _then) = _$TranslationLanguageLoadedCopyWithImpl;
+@useResult
+$Res call({
+ String currentLanguageCode
+});
+
+
+
+
+}
+/// @nodoc
+class _$TranslationLanguageLoadedCopyWithImpl<$Res>
+    implements $TranslationLanguageLoadedCopyWith<$Res> {
+  _$TranslationLanguageLoadedCopyWithImpl(this._self, this._then);
+
+  final TranslationLanguageLoaded _self;
+  final $Res Function(TranslationLanguageLoaded) _then;
+
+/// Create a copy of TranslationState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? currentLanguageCode = null,}) {
+  return _then(TranslationLanguageLoaded(
+currentLanguageCode: null == currentLanguageCode ? _self.currentLanguageCode : currentLanguageCode // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$TranslationLanguageLoadedImplCopyWithImpl<$Res>
-    extends _$TranslationStateCopyWithImpl<$Res,
-        _$TranslationLanguageLoadedImpl>
-    implements _$$TranslationLanguageLoadedImplCopyWith<$Res> {
-  __$$TranslationLanguageLoadedImplCopyWithImpl(
-      _$TranslationLanguageLoadedImpl _value,
-      $Res Function(_$TranslationLanguageLoadedImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of TranslationState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? currentLanguageCode = null,
-  }) {
-    return _then(_$TranslationLanguageLoadedImpl(
-      currentLanguageCode: null == currentLanguageCode
-          ? _value.currentLanguageCode
-          : currentLanguageCode // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$TranslationLanguageLoadedImpl implements TranslationLanguageLoaded {
-  const _$TranslationLanguageLoadedImpl({required this.currentLanguageCode});
 
-  @override
-  final String currentLanguageCode;
+class TranslationLanguageChanged implements TranslationState {
+  const TranslationLanguageChanged({required this.currentLanguageCode});
+  
 
-  @override
-  String toString() {
-    return 'TranslationState.languageLoaded(currentLanguageCode: $currentLanguageCode)';
-  }
+ final  String currentLanguageCode;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TranslationLanguageLoadedImpl &&
-            (identical(other.currentLanguageCode, currentLanguageCode) ||
-                other.currentLanguageCode == currentLanguageCode));
-  }
+/// Create a copy of TranslationState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TranslationLanguageChangedCopyWith<TranslationLanguageChanged> get copyWith => _$TranslationLanguageChangedCopyWithImpl<TranslationLanguageChanged>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, currentLanguageCode);
 
-  /// Create a copy of TranslationState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TranslationLanguageLoadedImplCopyWith<_$TranslationLanguageLoadedImpl>
-      get copyWith => __$$TranslationLanguageLoadedImplCopyWithImpl<
-          _$TranslationLanguageLoadedImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String currentLanguageCode) languageLoaded,
-    required TResult Function(String currentLanguageCode) languageChanged,
-    required TResult Function(bool updated, String currentLanguageCode)
-        syncSuccess,
-    required TResult Function(String message) error,
-  }) {
-    return languageLoaded(currentLanguageCode);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String currentLanguageCode)? languageLoaded,
-    TResult? Function(String currentLanguageCode)? languageChanged,
-    TResult? Function(bool updated, String currentLanguageCode)? syncSuccess,
-    TResult? Function(String message)? error,
-  }) {
-    return languageLoaded?.call(currentLanguageCode);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String currentLanguageCode)? languageLoaded,
-    TResult Function(String currentLanguageCode)? languageChanged,
-    TResult Function(bool updated, String currentLanguageCode)? syncSuccess,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (languageLoaded != null) {
-      return languageLoaded(currentLanguageCode);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TranslationInitial value) initial,
-    required TResult Function(TranslationLoading value) loading,
-    required TResult Function(TranslationLanguageLoaded value) languageLoaded,
-    required TResult Function(TranslationLanguageChanged value) languageChanged,
-    required TResult Function(TranslationSyncSuccess value) syncSuccess,
-    required TResult Function(TranslationError value) error,
-  }) {
-    return languageLoaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TranslationInitial value)? initial,
-    TResult? Function(TranslationLoading value)? loading,
-    TResult? Function(TranslationLanguageLoaded value)? languageLoaded,
-    TResult? Function(TranslationLanguageChanged value)? languageChanged,
-    TResult? Function(TranslationSyncSuccess value)? syncSuccess,
-    TResult? Function(TranslationError value)? error,
-  }) {
-    return languageLoaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TranslationInitial value)? initial,
-    TResult Function(TranslationLoading value)? loading,
-    TResult Function(TranslationLanguageLoaded value)? languageLoaded,
-    TResult Function(TranslationLanguageChanged value)? languageChanged,
-    TResult Function(TranslationSyncSuccess value)? syncSuccess,
-    TResult Function(TranslationError value)? error,
-    required TResult orElse(),
-  }) {
-    if (languageLoaded != null) {
-      return languageLoaded(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TranslationLanguageChanged&&(identical(other.currentLanguageCode, currentLanguageCode) || other.currentLanguageCode == currentLanguageCode));
 }
 
-abstract class TranslationLanguageLoaded implements TranslationState {
-  const factory TranslationLanguageLoaded(
-          {required final String currentLanguageCode}) =
-      _$TranslationLanguageLoadedImpl;
 
-  String get currentLanguageCode;
+@override
+int get hashCode => Object.hash(runtimeType,currentLanguageCode);
 
-  /// Create a copy of TranslationState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TranslationLanguageLoadedImplCopyWith<_$TranslationLanguageLoadedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'TranslationState.languageChanged(currentLanguageCode: $currentLanguageCode)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$TranslationLanguageChangedImplCopyWith<$Res> {
-  factory _$$TranslationLanguageChangedImplCopyWith(
-          _$TranslationLanguageChangedImpl value,
-          $Res Function(_$TranslationLanguageChangedImpl) then) =
-      __$$TranslationLanguageChangedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String currentLanguageCode});
+abstract mixin class $TranslationLanguageChangedCopyWith<$Res> implements $TranslationStateCopyWith<$Res> {
+  factory $TranslationLanguageChangedCopyWith(TranslationLanguageChanged value, $Res Function(TranslationLanguageChanged) _then) = _$TranslationLanguageChangedCopyWithImpl;
+@useResult
+$Res call({
+ String currentLanguageCode
+});
+
+
+
+
+}
+/// @nodoc
+class _$TranslationLanguageChangedCopyWithImpl<$Res>
+    implements $TranslationLanguageChangedCopyWith<$Res> {
+  _$TranslationLanguageChangedCopyWithImpl(this._self, this._then);
+
+  final TranslationLanguageChanged _self;
+  final $Res Function(TranslationLanguageChanged) _then;
+
+/// Create a copy of TranslationState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? currentLanguageCode = null,}) {
+  return _then(TranslationLanguageChanged(
+currentLanguageCode: null == currentLanguageCode ? _self.currentLanguageCode : currentLanguageCode // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$TranslationLanguageChangedImplCopyWithImpl<$Res>
-    extends _$TranslationStateCopyWithImpl<$Res,
-        _$TranslationLanguageChangedImpl>
-    implements _$$TranslationLanguageChangedImplCopyWith<$Res> {
-  __$$TranslationLanguageChangedImplCopyWithImpl(
-      _$TranslationLanguageChangedImpl _value,
-      $Res Function(_$TranslationLanguageChangedImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of TranslationState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? currentLanguageCode = null,
-  }) {
-    return _then(_$TranslationLanguageChangedImpl(
-      currentLanguageCode: null == currentLanguageCode
-          ? _value.currentLanguageCode
-          : currentLanguageCode // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$TranslationLanguageChangedImpl implements TranslationLanguageChanged {
-  const _$TranslationLanguageChangedImpl({required this.currentLanguageCode});
 
-  @override
-  final String currentLanguageCode;
+class TranslationSyncSuccess implements TranslationState {
+  const TranslationSyncSuccess({required this.updated, required this.currentLanguageCode});
+  
 
-  @override
-  String toString() {
-    return 'TranslationState.languageChanged(currentLanguageCode: $currentLanguageCode)';
-  }
+ final  bool updated;
+ final  String currentLanguageCode;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TranslationLanguageChangedImpl &&
-            (identical(other.currentLanguageCode, currentLanguageCode) ||
-                other.currentLanguageCode == currentLanguageCode));
-  }
+/// Create a copy of TranslationState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TranslationSyncSuccessCopyWith<TranslationSyncSuccess> get copyWith => _$TranslationSyncSuccessCopyWithImpl<TranslationSyncSuccess>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, currentLanguageCode);
 
-  /// Create a copy of TranslationState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TranslationLanguageChangedImplCopyWith<_$TranslationLanguageChangedImpl>
-      get copyWith => __$$TranslationLanguageChangedImplCopyWithImpl<
-          _$TranslationLanguageChangedImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String currentLanguageCode) languageLoaded,
-    required TResult Function(String currentLanguageCode) languageChanged,
-    required TResult Function(bool updated, String currentLanguageCode)
-        syncSuccess,
-    required TResult Function(String message) error,
-  }) {
-    return languageChanged(currentLanguageCode);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String currentLanguageCode)? languageLoaded,
-    TResult? Function(String currentLanguageCode)? languageChanged,
-    TResult? Function(bool updated, String currentLanguageCode)? syncSuccess,
-    TResult? Function(String message)? error,
-  }) {
-    return languageChanged?.call(currentLanguageCode);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String currentLanguageCode)? languageLoaded,
-    TResult Function(String currentLanguageCode)? languageChanged,
-    TResult Function(bool updated, String currentLanguageCode)? syncSuccess,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (languageChanged != null) {
-      return languageChanged(currentLanguageCode);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TranslationInitial value) initial,
-    required TResult Function(TranslationLoading value) loading,
-    required TResult Function(TranslationLanguageLoaded value) languageLoaded,
-    required TResult Function(TranslationLanguageChanged value) languageChanged,
-    required TResult Function(TranslationSyncSuccess value) syncSuccess,
-    required TResult Function(TranslationError value) error,
-  }) {
-    return languageChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TranslationInitial value)? initial,
-    TResult? Function(TranslationLoading value)? loading,
-    TResult? Function(TranslationLanguageLoaded value)? languageLoaded,
-    TResult? Function(TranslationLanguageChanged value)? languageChanged,
-    TResult? Function(TranslationSyncSuccess value)? syncSuccess,
-    TResult? Function(TranslationError value)? error,
-  }) {
-    return languageChanged?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TranslationInitial value)? initial,
-    TResult Function(TranslationLoading value)? loading,
-    TResult Function(TranslationLanguageLoaded value)? languageLoaded,
-    TResult Function(TranslationLanguageChanged value)? languageChanged,
-    TResult Function(TranslationSyncSuccess value)? syncSuccess,
-    TResult Function(TranslationError value)? error,
-    required TResult orElse(),
-  }) {
-    if (languageChanged != null) {
-      return languageChanged(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TranslationSyncSuccess&&(identical(other.updated, updated) || other.updated == updated)&&(identical(other.currentLanguageCode, currentLanguageCode) || other.currentLanguageCode == currentLanguageCode));
 }
 
-abstract class TranslationLanguageChanged implements TranslationState {
-  const factory TranslationLanguageChanged(
-          {required final String currentLanguageCode}) =
-      _$TranslationLanguageChangedImpl;
 
-  String get currentLanguageCode;
+@override
+int get hashCode => Object.hash(runtimeType,updated,currentLanguageCode);
 
-  /// Create a copy of TranslationState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TranslationLanguageChangedImplCopyWith<_$TranslationLanguageChangedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'TranslationState.syncSuccess(updated: $updated, currentLanguageCode: $currentLanguageCode)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$TranslationSyncSuccessImplCopyWith<$Res> {
-  factory _$$TranslationSyncSuccessImplCopyWith(
-          _$TranslationSyncSuccessImpl value,
-          $Res Function(_$TranslationSyncSuccessImpl) then) =
-      __$$TranslationSyncSuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({bool updated, String currentLanguageCode});
+abstract mixin class $TranslationSyncSuccessCopyWith<$Res> implements $TranslationStateCopyWith<$Res> {
+  factory $TranslationSyncSuccessCopyWith(TranslationSyncSuccess value, $Res Function(TranslationSyncSuccess) _then) = _$TranslationSyncSuccessCopyWithImpl;
+@useResult
+$Res call({
+ bool updated, String currentLanguageCode
+});
+
+
+
+
+}
+/// @nodoc
+class _$TranslationSyncSuccessCopyWithImpl<$Res>
+    implements $TranslationSyncSuccessCopyWith<$Res> {
+  _$TranslationSyncSuccessCopyWithImpl(this._self, this._then);
+
+  final TranslationSyncSuccess _self;
+  final $Res Function(TranslationSyncSuccess) _then;
+
+/// Create a copy of TranslationState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? updated = null,Object? currentLanguageCode = null,}) {
+  return _then(TranslationSyncSuccess(
+updated: null == updated ? _self.updated : updated // ignore: cast_nullable_to_non_nullable
+as bool,currentLanguageCode: null == currentLanguageCode ? _self.currentLanguageCode : currentLanguageCode // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$TranslationSyncSuccessImplCopyWithImpl<$Res>
-    extends _$TranslationStateCopyWithImpl<$Res, _$TranslationSyncSuccessImpl>
-    implements _$$TranslationSyncSuccessImplCopyWith<$Res> {
-  __$$TranslationSyncSuccessImplCopyWithImpl(
-      _$TranslationSyncSuccessImpl _value,
-      $Res Function(_$TranslationSyncSuccessImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of TranslationState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? updated = null,
-    Object? currentLanguageCode = null,
-  }) {
-    return _then(_$TranslationSyncSuccessImpl(
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as bool,
-      currentLanguageCode: null == currentLanguageCode
-          ? _value.currentLanguageCode
-          : currentLanguageCode // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$TranslationSyncSuccessImpl implements TranslationSyncSuccess {
-  const _$TranslationSyncSuccessImpl(
-      {required this.updated, required this.currentLanguageCode});
 
-  @override
-  final bool updated;
-  @override
-  final String currentLanguageCode;
+class TranslationError implements TranslationState {
+  const TranslationError({required this.message});
+  
 
-  @override
-  String toString() {
-    return 'TranslationState.syncSuccess(updated: $updated, currentLanguageCode: $currentLanguageCode)';
-  }
+ final  String message;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TranslationSyncSuccessImpl &&
-            (identical(other.updated, updated) || other.updated == updated) &&
-            (identical(other.currentLanguageCode, currentLanguageCode) ||
-                other.currentLanguageCode == currentLanguageCode));
-  }
+/// Create a copy of TranslationState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TranslationErrorCopyWith<TranslationError> get copyWith => _$TranslationErrorCopyWithImpl<TranslationError>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, updated, currentLanguageCode);
 
-  /// Create a copy of TranslationState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TranslationSyncSuccessImplCopyWith<_$TranslationSyncSuccessImpl>
-      get copyWith => __$$TranslationSyncSuccessImplCopyWithImpl<
-          _$TranslationSyncSuccessImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String currentLanguageCode) languageLoaded,
-    required TResult Function(String currentLanguageCode) languageChanged,
-    required TResult Function(bool updated, String currentLanguageCode)
-        syncSuccess,
-    required TResult Function(String message) error,
-  }) {
-    return syncSuccess(updated, currentLanguageCode);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String currentLanguageCode)? languageLoaded,
-    TResult? Function(String currentLanguageCode)? languageChanged,
-    TResult? Function(bool updated, String currentLanguageCode)? syncSuccess,
-    TResult? Function(String message)? error,
-  }) {
-    return syncSuccess?.call(updated, currentLanguageCode);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String currentLanguageCode)? languageLoaded,
-    TResult Function(String currentLanguageCode)? languageChanged,
-    TResult Function(bool updated, String currentLanguageCode)? syncSuccess,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (syncSuccess != null) {
-      return syncSuccess(updated, currentLanguageCode);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TranslationInitial value) initial,
-    required TResult Function(TranslationLoading value) loading,
-    required TResult Function(TranslationLanguageLoaded value) languageLoaded,
-    required TResult Function(TranslationLanguageChanged value) languageChanged,
-    required TResult Function(TranslationSyncSuccess value) syncSuccess,
-    required TResult Function(TranslationError value) error,
-  }) {
-    return syncSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TranslationInitial value)? initial,
-    TResult? Function(TranslationLoading value)? loading,
-    TResult? Function(TranslationLanguageLoaded value)? languageLoaded,
-    TResult? Function(TranslationLanguageChanged value)? languageChanged,
-    TResult? Function(TranslationSyncSuccess value)? syncSuccess,
-    TResult? Function(TranslationError value)? error,
-  }) {
-    return syncSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TranslationInitial value)? initial,
-    TResult Function(TranslationLoading value)? loading,
-    TResult Function(TranslationLanguageLoaded value)? languageLoaded,
-    TResult Function(TranslationLanguageChanged value)? languageChanged,
-    TResult Function(TranslationSyncSuccess value)? syncSuccess,
-    TResult Function(TranslationError value)? error,
-    required TResult orElse(),
-  }) {
-    if (syncSuccess != null) {
-      return syncSuccess(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TranslationError&&(identical(other.message, message) || other.message == message));
 }
 
-abstract class TranslationSyncSuccess implements TranslationState {
-  const factory TranslationSyncSuccess(
-          {required final bool updated,
-          required final String currentLanguageCode}) =
-      _$TranslationSyncSuccessImpl;
 
-  bool get updated;
-  String get currentLanguageCode;
+@override
+int get hashCode => Object.hash(runtimeType,message);
 
-  /// Create a copy of TranslationState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TranslationSyncSuccessImplCopyWith<_$TranslationSyncSuccessImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'TranslationState.error(message: $message)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$TranslationErrorImplCopyWith<$Res> {
-  factory _$$TranslationErrorImplCopyWith(_$TranslationErrorImpl value,
-          $Res Function(_$TranslationErrorImpl) then) =
-      __$$TranslationErrorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
-}
+abstract mixin class $TranslationErrorCopyWith<$Res> implements $TranslationStateCopyWith<$Res> {
+  factory $TranslationErrorCopyWith(TranslationError value, $Res Function(TranslationError) _then) = _$TranslationErrorCopyWithImpl;
+@useResult
+$Res call({
+ String message
+});
 
+
+
+
+}
 /// @nodoc
-class __$$TranslationErrorImplCopyWithImpl<$Res>
-    extends _$TranslationStateCopyWithImpl<$Res, _$TranslationErrorImpl>
-    implements _$$TranslationErrorImplCopyWith<$Res> {
-  __$$TranslationErrorImplCopyWithImpl(_$TranslationErrorImpl _value,
-      $Res Function(_$TranslationErrorImpl) _then)
-      : super(_value, _then);
+class _$TranslationErrorCopyWithImpl<$Res>
+    implements $TranslationErrorCopyWith<$Res> {
+  _$TranslationErrorCopyWithImpl(this._self, this._then);
 
-  /// Create a copy of TranslationState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$TranslationErrorImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+  final TranslationError _self;
+  final $Res Function(TranslationError) _then;
+
+/// Create a copy of TranslationState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(TranslationError(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
 
-class _$TranslationErrorImpl implements TranslationError {
-  const _$TranslationErrorImpl({required this.message});
-
-  @override
-  final String message;
-
-  @override
-  String toString() {
-    return 'TranslationState.error(message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TranslationErrorImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  /// Create a copy of TranslationState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TranslationErrorImplCopyWith<_$TranslationErrorImpl> get copyWith =>
-      __$$TranslationErrorImplCopyWithImpl<_$TranslationErrorImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String currentLanguageCode) languageLoaded,
-    required TResult Function(String currentLanguageCode) languageChanged,
-    required TResult Function(bool updated, String currentLanguageCode)
-        syncSuccess,
-    required TResult Function(String message) error,
-  }) {
-    return error(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String currentLanguageCode)? languageLoaded,
-    TResult? Function(String currentLanguageCode)? languageChanged,
-    TResult? Function(bool updated, String currentLanguageCode)? syncSuccess,
-    TResult? Function(String message)? error,
-  }) {
-    return error?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String currentLanguageCode)? languageLoaded,
-    TResult Function(String currentLanguageCode)? languageChanged,
-    TResult Function(bool updated, String currentLanguageCode)? syncSuccess,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TranslationInitial value) initial,
-    required TResult Function(TranslationLoading value) loading,
-    required TResult Function(TranslationLanguageLoaded value) languageLoaded,
-    required TResult Function(TranslationLanguageChanged value) languageChanged,
-    required TResult Function(TranslationSyncSuccess value) syncSuccess,
-    required TResult Function(TranslationError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TranslationInitial value)? initial,
-    TResult? Function(TranslationLoading value)? loading,
-    TResult? Function(TranslationLanguageLoaded value)? languageLoaded,
-    TResult? Function(TranslationLanguageChanged value)? languageChanged,
-    TResult? Function(TranslationSyncSuccess value)? syncSuccess,
-    TResult? Function(TranslationError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TranslationInitial value)? initial,
-    TResult Function(TranslationLoading value)? loading,
-    TResult Function(TranslationLanguageLoaded value)? languageLoaded,
-    TResult Function(TranslationLanguageChanged value)? languageChanged,
-    TResult Function(TranslationSyncSuccess value)? syncSuccess,
-    TResult Function(TranslationError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
 }
 
-abstract class TranslationError implements TranslationState {
-  const factory TranslationError({required final String message}) =
-      _$TranslationErrorImpl;
-
-  String get message;
-
-  /// Create a copy of TranslationState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TranslationErrorImplCopyWith<_$TranslationErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

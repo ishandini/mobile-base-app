@@ -5,7 +5,7 @@ part 'color_model.freezed.dart';
 part 'color_model.g.dart';
 
 @freezed
-class ColorModel with _$ColorModel {
+abstract class ColorModel with _$ColorModel {
   const ColorModel._();
 
   const factory ColorModel({

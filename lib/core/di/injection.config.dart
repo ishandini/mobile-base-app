@@ -1,5 +1,12 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
+
+// **************************************************************************
+// InjectableConfigGenerator
+// **************************************************************************
 
 // ignore_for_file: type=lint
+// coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
@@ -115,15 +122,12 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
 extension GetItInjectableX on _i174.GetIt {
+  // initializes the registration of main-scope dependencies inside of GetIt
   _i174.GetIt init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
   }) {
-    final gh = _i526.GetItHelper(
-      this,
-      environment,
-      environmentFilter,
-    );
+    final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final appModule = _$AppModule();
     final firebaseModule = _$FirebaseModule();
     final networkModule = _$NetworkModule();
@@ -131,114 +135,174 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i572.AppLocalizations>(() => appModule.appLocalizations());
     gh.lazySingleton<_i59.FirebaseAuth>(() => firebaseModule.firebaseAuth);
     gh.lazySingleton<_i974.FirebaseFirestore>(
-        () => firebaseModule.firebaseFirestore);
+      () => firebaseModule.firebaseFirestore,
+    );
     gh.lazySingleton<_i892.FirebaseMessaging>(
-        () => firebaseModule.firebaseMessaging);
+      () => firebaseModule.firebaseMessaging,
+    );
     gh.lazySingleton<_i627.FirebaseRemoteConfig>(
-        () => firebaseModule.firebaseRemoteConfig);
+      () => firebaseModule.firebaseRemoteConfig,
+    );
     gh.lazySingleton<_i809.FirebaseFunctions>(
-        () => firebaseModule.firebaseFunctions);
+      () => firebaseModule.firebaseFunctions,
+    );
     gh.lazySingleton<_i361.Dio>(() => networkModule.dio());
     gh.lazySingleton<_i792.AppInitializationService>(
-        () => _i792.AppInitializationService());
+      () => _i792.AppInitializationService(),
+    );
     gh.lazySingleton<_i11.PushNotificationNavigationHandler>(
-        () => _i11.PushNotificationNavigationHandler());
+      () => _i11.PushNotificationNavigationHandler(),
+    );
     gh.lazySingleton<_i261.ThemeLocalDataSource>(
-        () => _i17.ThemeLocalDataSourceImpl());
+      () => _i17.ThemeLocalDataSourceImpl(),
+    );
     gh.lazySingleton<_i325.ColorLocalDataSource>(
-        () => _i897.ColorLocalDataSourceImpl());
+      () => _i897.ColorLocalDataSourceImpl(),
+    );
     gh.factory<_i7.SettingsRemoteDataSource>(
-        () => _i1032.SettingsRemoteDataSourceImpl());
-    gh.lazySingleton<_i813.ColorRepository>(() => _i455.ColorRepositoryImpl(
-        localDataSource: gh<_i325.ColorLocalDataSource>()));
+      () => _i1032.SettingsRemoteDataSourceImpl(),
+    );
+    gh.lazySingleton<_i311.RemoteConfigDataSource>(
+      () => _i916.RemoteConfigDataSourceImpl(gh<_i627.FirebaseRemoteConfig>()),
+    );
+    gh.lazySingleton<_i813.ColorRepository>(
+      () => _i455.ColorRepositoryImpl(
+        localDataSource: gh<_i325.ColorLocalDataSource>(),
+      ),
+    );
     gh.lazySingleton<_i872.NotificationsDataSource>(
-        () => _i181.NotificationsDataSourceImpl(gh<_i892.FirebaseMessaging>()));
-    gh.lazySingleton<_i311.RemoteConfigDataSource>(() =>
-        _i916.RemoteConfigDataSourceImpl(gh<_i627.FirebaseRemoteConfig>()));
+      () => _i181.NotificationsDataSourceImpl(gh<_i892.FirebaseMessaging>()),
+    );
     gh.lazySingleton<_i501.TranslationLocalDataSource>(
-        () => _i26.TranslationLocalDataSourceImpl());
-    gh.lazySingleton<_i972.NotificationsRepository>(() =>
-        _i875.NotificationsRepositoryImpl(
-            dataSource: gh<_i872.NotificationsDataSource>()));
-    gh.factory<_i147.SettingsRepository>(() => _i683.SettingsRepositoryImpl(
-        remoteDataSource: gh<_i7.SettingsRemoteDataSource>()));
-    gh.lazySingleton<_i370.RemoteConfigRepository>(() =>
-        _i331.RemoteConfigRepositoryImpl(
-            dataSource: gh<_i311.RemoteConfigDataSource>()));
+      () => _i26.TranslationLocalDataSourceImpl(),
+    );
+    gh.lazySingleton<_i851.ThemeRepository>(
+      () => _i810.ThemeRepositoryImpl(
+        localDataSource: gh<_i261.ThemeLocalDataSource>(),
+      ),
+    );
     gh.lazySingleton<_i2.TranslationRemoteDataSource>(
-        () => _i230.TranslationRemoteDataSourceImpl());
+      () => _i230.TranslationRemoteDataSourceImpl(),
+    );
     gh.lazySingleton<_i500.ApiClient>(
-        () => networkModule.apiClient(gh<_i361.Dio>()));
-    gh.lazySingleton<_i994.FetchRemoteConfigUseCase>(() =>
-        _i994.FetchRemoteConfigUseCase(
-            repository: gh<_i370.RemoteConfigRepository>()));
-    gh.lazySingleton<_i885.GetRemoteValueUseCase>(() =>
-        _i885.GetRemoteValueUseCase(
-            repository: gh<_i370.RemoteConfigRepository>()));
-    gh.lazySingleton<_i851.ThemeRepository>(() => _i810.ThemeRepositoryImpl(
-        localDataSource: gh<_i261.ThemeLocalDataSource>()));
-    gh.lazySingleton<_i738.RemoteConfigBloc>(() => _i738.RemoteConfigBloc(
-          fetchRemoteConfigUseCase: gh<_i994.FetchRemoteConfigUseCase>(),
-          getRemoteValueUseCase: gh<_i885.GetRemoteValueUseCase>(),
-        ));
-    gh.lazySingleton<_i613.SyncColorsUseCase>(
-        () => _i613.SyncColorsUseCase(repository: gh<_i813.ColorRepository>()));
+      () => networkModule.apiClient(gh<_i361.Dio>()),
+    );
     gh.lazySingleton<_i162.GetColorsUseCase>(
-        () => _i162.GetColorsUseCase(repository: gh<_i813.ColorRepository>()));
-    gh.lazySingleton<_i163.RequestNotificationPermissionUseCase>(() =>
-        _i163.RequestNotificationPermissionUseCase(
-            repository: gh<_i972.NotificationsRepository>()));
-    gh.lazySingleton<_i570.SubscribeToTopicUseCase>(() =>
-        _i570.SubscribeToTopicUseCase(
-            repository: gh<_i972.NotificationsRepository>()));
-    gh.lazySingleton<_i702.GetFcmTokenUseCase>(() => _i702.GetFcmTokenUseCase(
-        repository: gh<_i972.NotificationsRepository>()));
-    gh.lazySingleton<_i350.SaveFontScaleUseCase>(() =>
-        _i350.SaveFontScaleUseCase(repository: gh<_i851.ThemeRepository>()));
-    gh.lazySingleton<_i656.GetFontScaleUseCase>(() =>
-        _i656.GetFontScaleUseCase(repository: gh<_i851.ThemeRepository>()));
-    gh.lazySingleton<_i129.GetThemeUseCase>(
-        () => _i129.GetThemeUseCase(repository: gh<_i851.ThemeRepository>()));
-    gh.lazySingleton<_i987.SaveThemeUseCase>(
-        () => _i987.SaveThemeUseCase(repository: gh<_i851.ThemeRepository>()));
+      () => _i162.GetColorsUseCase(repository: gh<_i813.ColorRepository>()),
+    );
+    gh.lazySingleton<_i613.SyncColorsUseCase>(
+      () => _i613.SyncColorsUseCase(repository: gh<_i813.ColorRepository>()),
+    );
+    gh.lazySingleton<_i972.NotificationsRepository>(
+      () => _i875.NotificationsRepositoryImpl(
+        dataSource: gh<_i872.NotificationsDataSource>(),
+      ),
+    );
+    gh.factory<_i147.SettingsRepository>(
+      () => _i683.SettingsRepositoryImpl(
+        remoteDataSource: gh<_i7.SettingsRemoteDataSource>(),
+      ),
+    );
+    gh.lazySingleton<_i370.RemoteConfigRepository>(
+      () => _i331.RemoteConfigRepositoryImpl(
+        dataSource: gh<_i311.RemoteConfigDataSource>(),
+      ),
+    );
     gh.lazySingleton<_i873.TranslationRepository>(
-        () => _i44.TranslationRepositoryImpl(
-              localDataSource: gh<_i501.TranslationLocalDataSource>(),
-              remoteDataSource: gh<_i2.TranslationRemoteDataSource>(),
-            ));
-    gh.lazySingleton<_i734.SyncTranslationsUseCase>(() =>
-        _i734.SyncTranslationsUseCase(
-            repository: gh<_i873.TranslationRepository>()));
-    gh.lazySingleton<_i985.GetTranslationUseCase>(() =>
-        _i985.GetTranslationUseCase(
-            repository: gh<_i873.TranslationRepository>()));
-    gh.lazySingleton<_i457.SetCurrentTranslationUseCase>(() =>
-        _i457.SetCurrentTranslationUseCase(
-            repository: gh<_i873.TranslationRepository>()));
-    gh.lazySingleton<_i467.NotificationsBloc>(() => _i467.NotificationsBloc(
-          requestPermissionUseCase:
-              gh<_i163.RequestNotificationPermissionUseCase>(),
-          getFcmTokenUseCase: gh<_i702.GetFcmTokenUseCase>(),
-          subscribeToTopicUseCase: gh<_i570.SubscribeToTopicUseCase>(),
-          notificationsRepository: gh<_i972.NotificationsRepository>(),
-        ));
-    gh.lazySingleton<_i369.ThemeBloc>(() => _i369.ThemeBloc(
-          getThemeUseCase: gh<_i129.GetThemeUseCase>(),
-          saveThemeUseCase: gh<_i987.SaveThemeUseCase>(),
-          getFontScaleUseCase: gh<_i656.GetFontScaleUseCase>(),
-          saveFontScaleUseCase: gh<_i350.SaveFontScaleUseCase>(),
-        ));
-    gh.lazySingleton<_i773.ColorBloc>(() => _i773.ColorBloc(
-          getColorsUseCase: gh<_i162.GetColorsUseCase>(),
-          syncColorsUseCase: gh<_i613.SyncColorsUseCase>(),
-          themeBloc: gh<_i369.ThemeBloc>(),
-        ));
-    gh.lazySingleton<_i447.TranslationBloc>(() => _i447.TranslationBloc(
-          getTranslationUseCase: gh<_i985.GetTranslationUseCase>(),
-          setCurrentTranslationUseCase:
-              gh<_i457.SetCurrentTranslationUseCase>(),
-          syncTranslationsUseCase: gh<_i734.SyncTranslationsUseCase>(),
-        ));
+      () => _i44.TranslationRepositoryImpl(
+        localDataSource: gh<_i501.TranslationLocalDataSource>(),
+        remoteDataSource: gh<_i2.TranslationRemoteDataSource>(),
+      ),
+    );
+    gh.lazySingleton<_i656.GetFontScaleUseCase>(
+      () => _i656.GetFontScaleUseCase(repository: gh<_i851.ThemeRepository>()),
+    );
+    gh.lazySingleton<_i129.GetThemeUseCase>(
+      () => _i129.GetThemeUseCase(repository: gh<_i851.ThemeRepository>()),
+    );
+    gh.lazySingleton<_i350.SaveFontScaleUseCase>(
+      () => _i350.SaveFontScaleUseCase(repository: gh<_i851.ThemeRepository>()),
+    );
+    gh.lazySingleton<_i987.SaveThemeUseCase>(
+      () => _i987.SaveThemeUseCase(repository: gh<_i851.ThemeRepository>()),
+    );
+    gh.lazySingleton<_i985.GetTranslationUseCase>(
+      () => _i985.GetTranslationUseCase(
+        repository: gh<_i873.TranslationRepository>(),
+      ),
+    );
+    gh.lazySingleton<_i457.SetCurrentTranslationUseCase>(
+      () => _i457.SetCurrentTranslationUseCase(
+        repository: gh<_i873.TranslationRepository>(),
+      ),
+    );
+    gh.lazySingleton<_i734.SyncTranslationsUseCase>(
+      () => _i734.SyncTranslationsUseCase(
+        repository: gh<_i873.TranslationRepository>(),
+      ),
+    );
+    gh.lazySingleton<_i702.GetFcmTokenUseCase>(
+      () => _i702.GetFcmTokenUseCase(
+        repository: gh<_i972.NotificationsRepository>(),
+      ),
+    );
+    gh.lazySingleton<_i163.RequestNotificationPermissionUseCase>(
+      () => _i163.RequestNotificationPermissionUseCase(
+        repository: gh<_i972.NotificationsRepository>(),
+      ),
+    );
+    gh.lazySingleton<_i570.SubscribeToTopicUseCase>(
+      () => _i570.SubscribeToTopicUseCase(
+        repository: gh<_i972.NotificationsRepository>(),
+      ),
+    );
+    gh.lazySingleton<_i994.FetchRemoteConfigUseCase>(
+      () => _i994.FetchRemoteConfigUseCase(
+        repository: gh<_i370.RemoteConfigRepository>(),
+      ),
+    );
+    gh.lazySingleton<_i885.GetRemoteValueUseCase>(
+      () => _i885.GetRemoteValueUseCase(
+        repository: gh<_i370.RemoteConfigRepository>(),
+      ),
+    );
+    gh.lazySingleton<_i467.NotificationsBloc>(
+      () => _i467.NotificationsBloc(
+        requestPermissionUseCase:
+            gh<_i163.RequestNotificationPermissionUseCase>(),
+        getFcmTokenUseCase: gh<_i702.GetFcmTokenUseCase>(),
+        subscribeToTopicUseCase: gh<_i570.SubscribeToTopicUseCase>(),
+        notificationsRepository: gh<_i972.NotificationsRepository>(),
+      ),
+    );
+    gh.lazySingleton<_i738.RemoteConfigBloc>(
+      () => _i738.RemoteConfigBloc(
+        fetchRemoteConfigUseCase: gh<_i994.FetchRemoteConfigUseCase>(),
+        getRemoteValueUseCase: gh<_i885.GetRemoteValueUseCase>(),
+      ),
+    );
+    gh.lazySingleton<_i369.ThemeBloc>(
+      () => _i369.ThemeBloc(
+        getThemeUseCase: gh<_i129.GetThemeUseCase>(),
+        saveThemeUseCase: gh<_i987.SaveThemeUseCase>(),
+        getFontScaleUseCase: gh<_i656.GetFontScaleUseCase>(),
+        saveFontScaleUseCase: gh<_i350.SaveFontScaleUseCase>(),
+      ),
+    );
+    gh.lazySingleton<_i447.TranslationBloc>(
+      () => _i447.TranslationBloc(
+        getTranslationUseCase: gh<_i985.GetTranslationUseCase>(),
+        setCurrentTranslationUseCase: gh<_i457.SetCurrentTranslationUseCase>(),
+        syncTranslationsUseCase: gh<_i734.SyncTranslationsUseCase>(),
+      ),
+    );
+    gh.lazySingleton<_i773.ColorBloc>(
+      () => _i773.ColorBloc(
+        getColorsUseCase: gh<_i162.GetColorsUseCase>(),
+        syncColorsUseCase: gh<_i613.SyncColorsUseCase>(),
+        themeBloc: gh<_i369.ThemeBloc>(),
+      ),
+    );
     return this;
   }
 }

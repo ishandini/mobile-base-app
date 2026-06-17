@@ -6,14 +6,13 @@ part of 'color_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ColorModelImpl _$$ColorModelImplFromJson(Map<String, dynamic> json) =>
-    _$ColorModelImpl(
-      key: json['key'] as String,
-      light: json['light'] as String,
-      dark: json['dark'] as String,
-    );
+_ColorModel _$ColorModelFromJson(Map<String, dynamic> json) => _ColorModel(
+  key: json['key'] as String,
+  light: json['light'] as String,
+  dark: json['dark'] as String,
+);
 
-Map<String, dynamic> _$$ColorModelImplToJson(_$ColorModelImpl instance) =>
+Map<String, dynamic> _$ColorModelToJson(_ColorModel instance) =>
     <String, dynamic>{
       'key': instance.key,
       'light': instance.light,

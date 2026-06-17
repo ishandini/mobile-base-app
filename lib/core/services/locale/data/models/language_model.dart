@@ -5,7 +5,7 @@ part 'language_model.freezed.dart';
 part 'language_model.g.dart';
 
 @freezed
-class LanguageModel with _$LanguageModel {
+abstract class LanguageModel with _$LanguageModel {
   const factory LanguageModel({
     List<TranslationModel>? translations,
     String? syncDateTime,

@@ -5,7 +5,7 @@ part 'color_data_model.freezed.dart';
 part 'color_data_model.g.dart';
 
 @freezed
-class ColorDataModel with _$ColorDataModel {
+abstract class ColorDataModel with _$ColorDataModel {
   const factory ColorDataModel({
     List<ColorModel>? colors,
     String? syncDateTime,
