@@ -37,14 +37,14 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https" android:host="edge.primegroup.lk" android:pathPrefix="/dl/" />
+                <data android:scheme="https" android:host="your.app.domain" android:pathPrefix="/dl/" />
             </intent-filter>
             <!-- AppsFlyer OneLink -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https" android:host="primelands.onelink.me" />
+                <data android:scheme="https" android:host="your.onelink.domain" />
             </intent-filter>
             <meta-data android:name="flutter_deeplinking_enabled" android:value="false" />
         </activity>

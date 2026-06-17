@@ -44,11 +44,11 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>FacebookAppID</key>
-	<string>1092765619103753</string>
+	<string>YOUR_FACEBOOK_APP_ID</string>
 	<key>FacebookDisplayName</key>
-	<string>Prime Edge</string>
+	<string>Base App</string>
 	<key>FacebookClientToken</key>
-	<string>b711a4e7e1728fb180b32d342db45a5e</string>
+	<string>YOUR_FACEBOOK_CLIENT_TOKEN</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -57,13 +57,13 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.YOUR_CLIENT_ID</string>
-				<string>fb1092765619103753</string>
+				<string>fbYOUR_FACEBOOK_APP_ID</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>edge.primegroup.lk</string>
+				<string>your.app.domain</string>
 			</array>
 		</dict>
 	</array>
@@ -72,15 +72,15 @@
 		<string>comgooglemaps</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Prime Edge uses your location to show nearby properties and calculate distances.</string>
+	<string>This app uses your location to show nearby results and calculate distances.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Prime Edge uses your location to show nearby properties and calculate distances.</string>
+	<string>This app uses your location to show nearby results and calculate distances.</string>
 	<key>NSMotionUsageDescription</key>
-	<string>This app uses your device motion to enable immersive 360° property tours.</string>
+	<string>This app uses your device motion for immersive content.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>PrimeBee AI uses your microphone to let you search for properties using your voice.</string>
+	<string>This app uses your microphone for voice input features.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>PrimeBee AI transcribes your voice so you can search for properties hands-free.</string>
+	<string>This app transcribes your voice for hands-free search.</string>
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
@@ -88,6 +88,6 @@
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>We use this to personalise your property search experience and measure campaign performance.</string>
+	<string>We use this to personalise your experience and measure campaign performance.</string>
 </dict>
 </plist>
