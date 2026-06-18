@@ -106,13 +106,13 @@ Scaffold(
           ),
         ]),
         SizedBox(height: AppSpace.s24),
-        // Language chips
+        // Language chips — driven by Const.supportLanguages
         Row(children: [
-          for (final (code, label) in [('en','EN'), ('si','SI'), ('ta','TA')])
+          for (final code in Const.supportLanguages)
             Padding(
               padding: EdgeInsets.only(right: AppSpace.s8),
               child: ChoiceChip(
-                label: Text(label),
+                label: Text(code.toUpperCase()),
                 selected: currentLangCode == code,
                 onSelected: (_) => context.read<WelcomeBloc>().add(ChangeLanguageEvt(key: code)),
               ),
