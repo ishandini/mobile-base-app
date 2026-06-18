@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter_app_template/features/placeholder/placeholder_page.dart';
+import 'package:flutter_app_template/features/welcome/presentation/pages/welcome_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -10,6 +10,6 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: PlaceholderPageRoute.page, path: '/'),
+        AutoRoute(page: WelcomePageRoute.page, path: '/'),
       ];
 }

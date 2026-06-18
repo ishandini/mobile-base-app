@@ -11,17 +11,17 @@
 part of 'app_router.dart';
 
 /// generated route for
-/// [PlaceholderPage]
-class PlaceholderPageRoute extends PageRouteInfo<void> {
-  const PlaceholderPageRoute({List<PageRouteInfo>? children})
-    : super(PlaceholderPageRoute.name, initialChildren: children);
+/// [WelcomePage]
+class WelcomePageRoute extends PageRouteInfo<void> {
+  const WelcomePageRoute({List<PageRouteInfo>? children})
+    : super(WelcomePageRoute.name, initialChildren: children);
 
-  static const String name = 'PlaceholderPageRoute';
+  static const String name = 'WelcomePageRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const PlaceholderPage();
+      return const WelcomePage();
     },
   );
 }
