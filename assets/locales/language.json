@@ -1,5 +1,16 @@
 {
-  "en": {
-    "app_name": "App Template"
-  }
+  "translations": [
+    {
+      "key": "welcome_page_lbl_welcome",
+      "en": "Welcome",
+      "si": "සාදරයෙන් පිළිගනිමු!",
+      "ta": "நடப்புக்"
+    },
+    {
+      "key": "welcome_page_lbl_theme",
+      "en": "Theme",
+      "si": "තේමාව",
+      "ta": "கருப்பொருள்"
+    }
+  ]
 }

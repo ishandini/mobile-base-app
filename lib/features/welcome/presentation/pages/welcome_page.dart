@@ -19,8 +19,8 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => sl<WelcomeBloc>(),
+    return BlocProvider.value(
+      value: sl<WelcomeBloc>(),
       child: const _WelcomeView(),
     );
   }
@@ -37,7 +37,7 @@ class _WelcomeView extends StatelessWidget {
           body: switch (state) {
             WelcomeLoading() => const Center(child: CircularProgressIndicator()),
             WelcomeReady() => const _ReadyBody(),
-            _ => const Center(child: CircularProgressIndicator()),
+            WelcomeError(:final message) => _ErrorBody(message: message),
           },
         );
       },
@@ -70,7 +70,7 @@ class _ReadyBody extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Theme',
+                AppLocalizations.of(context).translate('welcome_page_lbl_theme'),
                 style: context.textStyle(
                   size: FontSize.s14,
                   color: context.getColor(AppColor.sampleColor),
@@ -125,4 +125,34 @@ class _ReadyBody extends StatelessWidget {
           currentLanguageCode,
         _ => Const.languageEn,
       };
+}
+
+class _ErrorBody extends StatelessWidget {
+  const _ErrorBody({required this.message});
+
+  final String message;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            message,
+            style: context.textStyle(
+              size: FontSize.s14,
+              color: context.getColor(AppColor.sampleColor),
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: AppSpace.s24),
+          TextButton(
+            onPressed: () => context.read<WelcomeBloc>().add(const InitializeWelcomeEvt()),
+            child: const Text('Retry'),
+          ),
+        ],
+      ),
+    );
+  }
 }

@@ -55,12 +55,13 @@ extension WelcomeStatePatterns on WelcomeState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( WelcomeLoading value)?  loading,TResult Function( WelcomeReady value)?  ready,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( WelcomeLoading value)?  loading,TResult Function( WelcomeReady value)?  ready,TResult Function( WelcomeError value)?  error,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case WelcomeLoading() when loading != null:
 return loading(_that);case WelcomeReady() when ready != null:
-return ready(_that);case _:
+return ready(_that);case WelcomeError() when error != null:
+return error(_that);case _:
   return orElse();
 
 }
@@ -78,15 +79,13 @@ return ready(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( WelcomeLoading value)  loading,required TResult Function( WelcomeReady value)  ready,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( WelcomeLoading value)  loading,required TResult Function( WelcomeReady value)  ready,required TResult Function( WelcomeError value)  error,}){
 final _that = this;
 switch (_that) {
 case WelcomeLoading():
 return loading(_that);case WelcomeReady():
-return ready(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
+return ready(_that);case WelcomeError():
+return error(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -100,12 +99,13 @@ return ready(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( WelcomeLoading value)?  loading,TResult? Function( WelcomeReady value)?  ready,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( WelcomeLoading value)?  loading,TResult? Function( WelcomeReady value)?  ready,TResult? Function( WelcomeError value)?  error,}){
 final _that = this;
 switch (_that) {
 case WelcomeLoading() when loading != null:
 return loading(_that);case WelcomeReady() when ready != null:
-return ready(_that);case _:
+return ready(_that);case WelcomeError() when error != null:
+return error(_that);case _:
   return null;
 
 }
@@ -122,11 +122,12 @@ return ready(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  loading,TResult Function()?  ready,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  loading,TResult Function()?  ready,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case WelcomeLoading() when loading != null:
 return loading();case WelcomeReady() when ready != null:
-return ready();case _:
+return ready();case WelcomeError() when error != null:
+return error(_that.message);case _:
   return orElse();
 
 }
@@ -144,14 +145,12 @@ return ready();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  loading,required TResult Function()  ready,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  loading,required TResult Function()  ready,required TResult Function( String message)  error,}) {final _that = this;
 switch (_that) {
 case WelcomeLoading():
 return loading();case WelcomeReady():
-return ready();case _:
-  throw StateError('Unexpected subclass');
-
-}
+return ready();case WelcomeError():
+return error(_that.message);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -165,11 +164,12 @@ return ready();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  loading,TResult? Function()?  ready,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  loading,TResult? Function()?  ready,TResult? Function( String message)?  error,}) {final _that = this;
 switch (_that) {
 case WelcomeLoading() when loading != null:
 return loading();case WelcomeReady() when ready != null:
-return ready();case _:
+return ready();case WelcomeError() when error != null:
+return error(_that.message);case _:
   return null;
 
 }
@@ -240,5 +240,71 @@ String toString() {
 
 
 
+
+/// @nodoc
+
+
+class WelcomeError implements WelcomeState {
+  const WelcomeError({required this.message});
+  
+
+ final  String message;
+
+/// Create a copy of WelcomeState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$WelcomeErrorCopyWith<WelcomeError> get copyWith => _$WelcomeErrorCopyWithImpl<WelcomeError>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is WelcomeError&&(identical(other.message, message) || other.message == message));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,message);
+
+@override
+String toString() {
+  return 'WelcomeState.error(message: $message)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $WelcomeErrorCopyWith<$Res> implements $WelcomeStateCopyWith<$Res> {
+  factory $WelcomeErrorCopyWith(WelcomeError value, $Res Function(WelcomeError) _then) = _$WelcomeErrorCopyWithImpl;
+@useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class _$WelcomeErrorCopyWithImpl<$Res>
+    implements $WelcomeErrorCopyWith<$Res> {
+  _$WelcomeErrorCopyWithImpl(this._self, this._then);
+
+  final WelcomeError _self;
+  final $Res Function(WelcomeError) _then;
+
+/// Create a copy of WelcomeState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(WelcomeError(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
 
 // dart format on

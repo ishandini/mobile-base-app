@@ -22,6 +22,7 @@ void main() {
   setUpAll(() {
     registerFallbackValue(const SyncColorsEvt());
     registerFallbackValue(const InitializeTranslationsEvent());
+    registerFallbackValue(const ColorError());
   });
   late MockColorBloc colorBloc;
   late MockTranslationBloc translationBloc;
@@ -95,7 +96,20 @@ void main() {
             .add(const TranslationLanguageChanged(currentLanguageCode: 'en'));
         await Future.delayed(Duration.zero);
       },
-      expect: () => [isA<WelcomeLoading>(), isA<WelcomeReady>()],
+      expect: () => [isA<WelcomeReady>()],
+    );
+
+    blocTest<WelcomeBloc, WelcomeState>(
+      'emits WelcomeError when ColorBloc emits ColorError',
+      build: () => WelcomeBloc(
+        colorBloc: colorBloc,
+        translationBloc: translationBloc,
+      ),
+      act: (bloc) async {
+        colorController.add(const ColorError(message: 'sync failed'));
+        await Future.delayed(Duration.zero);
+      },
+      expect: () => [isA<WelcomeError>()],
     );
 
     test('ChangeLanguageEvt delegates to TranslationBloc', () async {

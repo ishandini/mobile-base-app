@@ -20,18 +20,23 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
     colorsSubscription = colorBloc.stream.listen((colorState) {
       if (colorState is ColorLoaded) {
         translationBloc.add(const InitializeTranslationsEvent());
+      } else if (colorState is ColorError) {
+        add(WelcomeErrorEvt(message: colorState.message ?? 'Color sync failed'));
       }
     });
 
     translationSubscription = translationBloc.stream.listen((translationState) {
       if (translationState is TranslationLanguageChanged) {
         add(const TranslationCompletedEvt());
+      } else if (translationState is TranslationError) {
+        add(WelcomeErrorEvt(message: translationState.message));
       }
     });
 
     on<InitializeWelcomeEvt>(_onInitialize);
     on<TranslationCompletedEvt>(_onTranslationCompleted);
     on<ChangeLanguageEvt>(_onChangeLanguage);
+    on<WelcomeErrorEvt>(_onError);
 
     add(const InitializeWelcomeEvt());
   }
@@ -39,14 +44,13 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
   final ColorBloc colorBloc;
   final TranslationBloc translationBloc;
 
-  late StreamSubscription<dynamic> colorsSubscription;
-  late StreamSubscription<dynamic> translationSubscription;
+  late StreamSubscription<ColorState> colorsSubscription;
+  late StreamSubscription<TranslationState> translationSubscription;
 
   FutureOr<void> _onInitialize(
     InitializeWelcomeEvt event,
     Emitter<WelcomeState> emit,
   ) {
-    emit(WelcomeLoading());
     colorBloc.add(const SyncColorsEvt());
   }
 
@@ -62,6 +66,13 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
     Emitter<WelcomeState> emit,
   ) {
     translationBloc.add(ChangeLanguageEvent(languageCode: event.key));
+  }
+
+  FutureOr<void> _onError(
+    WelcomeErrorEvt event,
+    Emitter<WelcomeState> emit,
+  ) {
+    emit(WelcomeError(message: event.message));
   }
 
   @override
