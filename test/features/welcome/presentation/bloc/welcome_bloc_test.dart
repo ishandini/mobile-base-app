@@ -4,7 +4,6 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_app_template/core/services/colors/presentation/bloc/color_bloc.dart';
 import 'package:flutter_app_template/core/services/colors/presentation/bloc/color_event.dart';
 import 'package:flutter_app_template/core/services/colors/presentation/bloc/color_state.dart';
-import 'package:flutter_app_template/core/services/colors/data/models/color_model.dart';
 import 'package:flutter_app_template/core/services/locale/presentation/bloc/translation_bloc.dart';
 import 'package:flutter_app_template/core/services/locale/presentation/bloc/translation_event.dart';
 import 'package:flutter_app_template/core/services/locale/presentation/bloc/translation_state.dart';
@@ -33,14 +32,14 @@ void main() {
     colorBloc = MockColorBloc();
     translationBloc = MockTranslationBloc();
     colorController = StreamController<ColorState>.broadcast();
-    translationController =
-        StreamController<TranslationState>.broadcast();
+    translationController = StreamController<TranslationState>.broadcast();
 
     when(() => colorBloc.stream).thenAnswer((_) => colorController.stream);
     when(() => colorBloc.state).thenReturn(const ColorInitial());
     when(() => colorBloc.add(any())).thenReturn(null);
-    when(() => translationBloc.stream)
-        .thenAnswer((_) => translationController.stream);
+    when(
+      () => translationBloc.stream,
+    ).thenAnswer((_) => translationController.stream);
     when(() => translationBloc.state).thenReturn(const TranslationInitial());
     when(() => translationBloc.add(any())).thenReturn(null);
   });
@@ -71,29 +70,29 @@ void main() {
     });
 
     test(
-        'dispatches InitializeTranslationsEvent when ColorBloc emits ColorLoaded',
-        () async {
-      final bloc = WelcomeBloc(
-        colorBloc: colorBloc,
-        translationBloc: translationBloc,
-      );
-      colorController.add(ColorLoaded(colors: const []));
-      await Future.delayed(Duration.zero);
-      verify(() =>
-              translationBloc.add(const InitializeTranslationsEvent()))
-          .called(1);
-      bloc.close();
-    });
+      'dispatches InitializeTranslationsEvent when ColorBloc emits ColorLoaded',
+      () async {
+        final bloc = WelcomeBloc(
+          colorBloc: colorBloc,
+          translationBloc: translationBloc,
+        );
+        colorController.add(const ColorLoaded(colors: const []));
+        await Future.delayed(Duration.zero);
+        verify(
+          () => translationBloc.add(const InitializeTranslationsEvent()),
+        ).called(1);
+        bloc.close();
+      },
+    );
 
     blocTest<WelcomeBloc, WelcomeState>(
       'emits WelcomeReady when TranslationBloc emits TranslationLanguageChanged',
-      build: () => WelcomeBloc(
-        colorBloc: colorBloc,
-        translationBloc: translationBloc,
-      ),
+      build: () =>
+          WelcomeBloc(colorBloc: colorBloc, translationBloc: translationBloc),
       act: (bloc) async {
-        translationController
-            .add(const TranslationLanguageChanged(currentLanguageCode: 'en'));
+        translationController.add(
+          const TranslationLanguageChanged(currentLanguageCode: 'en'),
+        );
         await Future.delayed(Duration.zero);
       },
       expect: () => [isA<WelcomeReady>()],
@@ -101,10 +100,8 @@ void main() {
 
     blocTest<WelcomeBloc, WelcomeState>(
       'emits WelcomeError when ColorBloc emits ColorError',
-      build: () => WelcomeBloc(
-        colorBloc: colorBloc,
-        translationBloc: translationBloc,
-      ),
+      build: () =>
+          WelcomeBloc(colorBloc: colorBloc, translationBloc: translationBloc),
       act: (bloc) async {
         colorController.add(const ColorError(message: 'sync failed'));
         await Future.delayed(Duration.zero);
@@ -119,9 +116,10 @@ void main() {
       );
       bloc.add(const ChangeLanguageEvt(key: 'si'));
       await Future.delayed(Duration.zero);
-      verify(() =>
-              translationBloc.add(const ChangeLanguageEvent(languageCode: 'si')))
-          .called(1);
+      verify(
+        () =>
+            translationBloc.add(const ChangeLanguageEvent(languageCode: 'si')),
+      ).called(1);
       bloc.close();
     });
   });

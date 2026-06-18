@@ -95,9 +95,9 @@ the matching `.env.*` file via `flutter_dotenv` before DI is bootstrapped.
 **Code-gen dev dependencies:** `injectable_generator`, `retrofit_generator`,
 `freezed`, `json_serializable`, `auto_route_generator`, `build_runner`
 
-**UI dev tools:** `widgetbook ^3.21.0` (resolved from `^3.4.0`) — component catalogue run as
-a separate entry point: `flutter run -t widgetbook/lib/main.dart`. Stories live in
-`widgetbook/lib/components/`. See Conventions for widgetbook file placement rules.
+**UI dev tools:** Plain Flutter component catalog (no Widgetbook library) — run as a separate
+entry point: `flutter run -t widgetbook/lib/main.dart`. Catalog sections live in
+`widgetbook/lib/components/`. See Conventions for catalog file placement rules.
 
 ---
 

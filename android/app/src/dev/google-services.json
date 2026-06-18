@@ -1,20 +1,67 @@
 {
-  "_comment": "Replace this file with your real google-services.json for the DEV flavor. See SETUP.md.",
   "project_info": {
-    "project_number": "YOUR_PROJECT_NUMBER",
-    "project_id": "your-project-id-dev",
-    "storage_bucket": "your-project-id-dev.appspot.com"
+    "project_number": "461267818528",
+    "project_id": "baseapp-90e81",
+    "storage_bucket": "baseapp-90e81.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:YOUR_PROJECT_NUMBER:android:YOUR_APP_ID",
+        "mobilesdk_app_id": "1:461267818528:android:10712346dd5e25e7258445",
         "android_client_info": {
           "package_name": "com.mobile_base_app.dev"
         }
       },
-      "api_key": [{"current_key": "YOUR_API_KEY"}],
-      "services": {}
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU6Ewy3U9NESx9EGrWoqK4C2Y0FTNwUFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461267818528:android:295164da188c1ea1258445",
+        "android_client_info": {
+          "package_name": "nz.co.iclick.flutter_base_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU6Ewy3U9NESx9EGrWoqK4C2Y0FTNwUFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461267818528:android:afded734d5793d68258445",
+        "android_client_info": {
+          "package_name": "nz.co.iclick.flutter_base_app.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU6Ewy3U9NESx9EGrWoqK4C2Y0FTNwUFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
     }
-  ]
+  ],
+  "configuration_version": "1"
 }

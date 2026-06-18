@@ -9,9 +9,6 @@
 		<string>Default</string>
 	</array>
 	<key>com.apple.developer.associated-domains</key>
-	<array>
-		<string>applinks:edge.primegroup.lk</string>
-		<string>applinks:primelands.onelink.me</string>
-	</array>
+	<array/>
 </dict>
 </plist>

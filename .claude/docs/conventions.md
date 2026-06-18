@@ -192,6 +192,22 @@ sealed class ColorState with _$ColorState {
 ```
 Subtype names (`ColorInitial`, `ColorLoaded`, etc.) are directly usable as constructors and in `is` checks.
 
+**`const` for no-field sealed subtypes:** Any sealed subtype whose `const factory` declares no arguments must be instantiated with `const`. The `prefer_const_constructors` lint enforces this.
+
+```dart
+// CORRECT
+emit(const WelcomeLoading());
+emit(const WelcomeReady());
+: super(const WelcomeLoading())
+
+// WRONG — prefer_const_constructors lint error
+emit(WelcomeLoading());
+emit(WelcomeReady());
+: super(WelcomeLoading())
+```
+
+This applies equally to event subtypes: `add(const InitializeWelcomeEvt())`, not `add(InitializeWelcomeEvt())`.
+
 **Single-class states** (for feature BLoCs with one state + status enum):
 ```dart
 enum BeneficiariesStatus { initial, loading, success, error }
@@ -454,28 +470,76 @@ This rule is enforced by:
 
 ---
 
-## Widgetbook Stories
+## Component Catalog
 
-Every shared component in `lib/core/widgets/` must have a corresponding story file.
+Every shared component in `lib/core/widgets/` must have a corresponding catalog section file. The catalog is a plain scrollable Flutter app — no Widgetbook library.
 
-**File placement:** `widgetbook/lib/components/<category>/<component>_stories.dart`
+**Run the catalog:** `flutter run -t widgetbook/lib/main.dart` (runs within the main project, not a separate Flutter project).
 
-Examples:
-- `widgetbook/lib/components/buttons/primary_button_stories.dart`
-- `widgetbook/lib/components/buttons/nav_back_button_stories.dart`
-- `widgetbook/lib/components/auth_base_page_stories.dart`
-- `widgetbook/lib/components/prime_logo_stories.dart`
+### File placement
 
-**Story file exports a single `WidgetbookComponent` named `<camelCase>Component`:**
+`widgetbook/lib/components/<category>/<component>_section.dart`
+
+Category folders match logical groupings used in `widgetbook/lib/main.dart`:
+
+| Category | Example files |
+|----------|--------------|
+| `buttons` | `primary_button_section.dart`, `secondary_button_section.dart` |
+| `inputs` | `text_field_section.dart`, `otp_input_section.dart` |
+| `cards` | `plain_card_section.dart` |
+| `layout` | `base_page_section.dart`, `page_bottom_bar_section.dart` |
+
+### Section file pattern
+
+Each file exports a single `StatelessWidget` named `<ComponentName>Section`:
+
 ```dart
-final primaryButtonComponent = WidgetbookComponent(
-  name: 'PrimaryButton',
-  useCases: [ ... ],
-);
+// widgetbook/lib/components/buttons/primary_button_section.dart
+
+import 'package:flutter/material.dart';
+import 'package:flutter_app_template/core/widgets/primary_button.dart';
+import '../../catalog_section.dart';
+
+class PrimaryButtonSection extends StatelessWidget {
+  const PrimaryButtonSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const CatalogVariantLabel('Default'),
+        PrimaryButton(label: 'Continue', onPressed: () {}),
+        const CatalogVariantLabel('Loading'),
+        PrimaryButton(label: 'Continue', isLoading: true, onPressed: () {}),
+        const CatalogVariantLabel('Disabled'),
+        const PrimaryButton(label: 'Continue', onPressed: null),
+      ],
+    );
+  }
+}
 ```
 
-**Registration:** Add the component to the correct `WidgetbookFolder` in `widgetbook/lib/main.dart`.
+### Registration in `widgetbook/lib/main.dart`
 
-**Use cases must cover:** default/all-props-default state, all enum variants, all boolean flag combinations (enabled/disabled, with/without optional props), and any error/loading states if they exist.
+Add an import and a `CatalogSectionHeader` + section widget to `CatalogPage.build()`:
 
-**Run widgetbook:** `flutter run -t widgetbook/lib/main.dart` (within the main project — not a separate Flutter project).
+```dart
+// top of file
+import 'components/buttons/primary_button_section.dart';
+
+// inside CatalogPage ListView children:
+const CatalogSectionHeader(title: 'Buttons'),
+const PrimaryButtonSection(),
+```
+
+### Coverage rules
+
+Each section must show: default/all-props-default state, all enum variants, all boolean flag combinations (enabled/disabled, with/without optional props), and error/loading states if they exist.
+
+### Helper widgets (`widgetbook/lib/catalog_section.dart`)
+
+| Widget | Purpose |
+|--------|---------|
+| `CatalogSectionHeader(title: 'Buttons')` | Bold category divider — one per logical group |
+| `CatalogVariantLabel('Default')` | Small grey label above each variant |

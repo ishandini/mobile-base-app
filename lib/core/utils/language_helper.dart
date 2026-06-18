@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/core/constants/const.dart';
 
 class LanguageHelper {
   static bool isRTL(BuildContext context) {
-    return Localizations.localeOf(context).languageCode == Const.languageTa;
+    return false;
   }
 
   static TextDirection textDirection(BuildContext context) {

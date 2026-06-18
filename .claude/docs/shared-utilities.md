@@ -251,12 +251,13 @@ Country list: Australia (1), Bahrain (2), Canada (3), Kuwait (4), Oman (5), Qata
 
 ## LanguageHelper — `lib/core/utils/language_helper.dart`
 
-Static helper for RTL detection. RTL applies only when `languageCode == 'ta'`.
+Static helper for RTL detection. `isRTL` currently returns `false` (RTL disabled while
+Tamil layout is not yet designed); `textDirection` always returns `TextDirection.ltr`.
 
 ```dart
-LanguageHelper.isRTL(context)           // bool
-LanguageHelper.textDirection(context)   // TextDirection.rtl / .ltr
-LanguageHelper.textAlign(context)       // TextAlign.right / .left
+LanguageHelper.isRTL(context)           // bool — always false (RTL not yet active)
+LanguageHelper.textDirection(context)   // TextDirection.ltr
+LanguageHelper.textAlign(context)       // TextAlign.left
 ```
 
 ---

@@ -13,15 +13,15 @@ import 'package:injectable/injectable.dart';
 
 @lazySingleton
 class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
-  WelcomeBloc({
-    required this.colorBloc,
-    required this.translationBloc,
-  }) : super(WelcomeLoading()) {
+  WelcomeBloc({required this.colorBloc, required this.translationBloc})
+    : super(const WelcomeLoading()) {
     colorsSubscription = colorBloc.stream.listen((colorState) {
       if (colorState is ColorLoaded) {
         translationBloc.add(const InitializeTranslationsEvent());
       } else if (colorState is ColorError) {
-        add(WelcomeErrorEvt(message: colorState.message ?? 'Color sync failed'));
+        add(
+          WelcomeErrorEvt(message: colorState.message ?? 'Color sync failed'),
+        );
       }
     });
 
@@ -58,7 +58,7 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
     TranslationCompletedEvt event,
     Emitter<WelcomeState> emit,
   ) {
-    emit(WelcomeReady());
+    emit(const WelcomeReady());
   }
 
   FutureOr<void> _onChangeLanguage(
@@ -68,10 +68,7 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
     translationBloc.add(ChangeLanguageEvent(languageCode: event.key));
   }
 
-  FutureOr<void> _onError(
-    WelcomeErrorEvt event,
-    Emitter<WelcomeState> emit,
-  ) {
+  FutureOr<void> _onError(WelcomeErrorEvt event, Emitter<WelcomeState> emit) {
     emit(WelcomeError(message: event.message));
   }
 

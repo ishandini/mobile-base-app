@@ -1,6 +1,6 @@
 ---
 name: component-builder
-description: Builds a single reusable Flutter widget from a Figma component node URL. Creates the .dart file in lib/core/widgets/, adds required asset constants, creates the widgetbook story, and registers it in widgetbook/lib/main.dart. One component per invocation. Strictly follows the project design system — no hardcoded colors, no raw TextStyle, correct spacing/radius tokens.
+description: Builds a single reusable Flutter widget from a Figma component node URL. Creates the .dart file in lib/core/widgets/, adds required asset constants, creates a catalog section in widgetbook/lib/components/, and registers it in widgetbook/lib/main.dart. One component per invocation. Strictly follows the project design system — no hardcoded colors, no raw TextStyle, correct spacing/radius tokens.
 model: sonnet
 tools:
   - mcp__figma-desktop__get_design_context
@@ -172,12 +172,35 @@ Never use `StatefulWidget` just for controllers.
    - `const` constructor with `super.key`
    - `const` constructors throughout wherever possible
    - No barrel files
-5. **Create widgetbook story** at `widgetbook/lib/components/<category>/<component_name>_stories.dart`
-   - Export a single `WidgetbookComponent` named `<camelCase>Component`
-   - Cover: default state, all enum variants, all boolean combinations, disabled state
-   - Use `_frame()` helper: `Widget _frame(Widget child) => Padding(padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24), child: child);`
-   - Wrap in `MultiBlocProvider` (ThemeBloc + ColorBloc + TranslationBloc) — read `widgetbook/lib/main.dart` for the provider setup pattern
-6. **Register in widgetbook** — Read `widgetbook/lib/main.dart`, add import and entry in the correct `WidgetbookFolder`.
+5. **Create catalog section** at `widgetbook/lib/components/<category>/<component_name>_section.dart`
+   - Export a single `StatelessWidget` named `<ComponentName>Section` with a `const` constructor
+   - `build()` returns a `Column` with `CatalogVariantLabel` + widget instances
+   - Cover: default state, all enum variants, all boolean flag combinations, disabled/loading/error states
+   - Do NOT use `const` on variants that require callbacks — pass `() {}` for `onPressed` etc.
+   - Template:
+     ```dart
+     import 'package:flutter/material.dart';
+     import 'package:flutter_app_template/core/widgets/<component_name>.dart';
+     import '../../catalog_section.dart';
+
+     class <ComponentName>Section extends StatelessWidget {
+       const <ComponentName>Section({super.key});
+
+       @override
+       Widget build(BuildContext context) {
+         return Column(
+           crossAxisAlignment: CrossAxisAlignment.start,
+           children: [
+             const CatalogVariantLabel('Default'),
+             // default variant here
+             const CatalogVariantLabel('Disabled'),
+             // disabled variant here
+           ],
+         );
+       }
+     }
+     ```
+6. **Register in catalog** — Read `widgetbook/lib/main.dart`, add the import and `<ComponentName>Section()` under the correct `CatalogSectionHeader`. If the category header doesn't exist yet, add `const CatalogSectionHeader(title: '<Category>')` before the section.
 7. **Verify** — run `flutter analyze lib/core/widgets/<component_name>.dart` and fix any issues.
 
 ---

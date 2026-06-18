@@ -813,14 +813,12 @@ Used inside `InstallmentOverviewCard` widget — not tied to a specific screen.
 
 ## Adding a New Translation Key
 
-1. Add the key to the JSON seed files in `assets/` (one file per language or a combined file — check
-   existing structure).
-2. Use the key in UI code:
+1. Add the key + translations to `assets/locales/language.json`.
+2. **Update `sync_date_time`** in `language.json` to a new value (e.g. today's date in `DD/MM/YYYY HH:MM` format). The sync guard in `TranslationRepositoryImpl.syncTranslations()` compares `sync_date_time` against the stored last-sync value — if they match, the DB is not updated. Bumping the date forces a re-seed on next app launch.
+3. Use the key in UI code:
    ```dart
    localizations.translate('my_screen_lbl_my_text')
    ```
-3. If the API provides translations, the key will be synced automatically on next
-   `SyncTranslationsEvent`.
 4. `translate()` falls back to returning the key string itself if not found — safe for
    development before the key is seeded.
 

@@ -180,6 +180,7 @@ Run through this list on every file you write:
 - **Page with form controllers** → use `HookWidget` + `useTextEditingController()`, not `StatefulWidget`
 - **Auth/modal page route** → `TransitionsBuilders.fadeIn`; detail/form page → `TransitionsBuilders.slideLeft`
 - **All widget constructors** → `const` where possible; use `super.key` not `Key? key` + `: super(key: key)`
+- **Freezed sealed subtypes with no fields** → always prefix with `const`: `emit(const WelcomeLoading())`, `: super(const WelcomeLoading())`, `add(const SomeEvt())` — applies to both state and event subtypes
 - **Custom tap targets** → `GestureDetector(behavior: HitTestBehavior.opaque)`
 - **No hardcoded colors** → `context.getColor(AppColor.xxx)` only; exception: `Colors.transparent`
 - **No hardcoded spacing/radius** → `AppSpace`, `AppRadius`, `AppPadding` constants only; no arithmetic on them

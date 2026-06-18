@@ -141,9 +141,11 @@ If it does not exist, create one after completing your work.
 
 ---
 
-## Widgetbook Rule
+## Component Catalog Rule
 
 Every time a new shared component is created in `lib/core/widgets/`:
-1. Create a corresponding widgetbook story in `widgetbook/lib/components/`
-2. Show all variants, states, and prop combinations
-3. Update `widgetbook/lib/main.dart` to include the new story
+1. Create a catalog section file in `widgetbook/lib/components/<category>/<component>_section.dart`
+2. Export a `StatelessWidget` named `<ComponentName>Section` showing all variants, states, and prop combinations using `CatalogVariantLabel` for labels
+3. Register it in `widgetbook/lib/main.dart` under the correct `CatalogSectionHeader`
+
+Run the catalog: `flutter run -t widgetbook/lib/main.dart`
