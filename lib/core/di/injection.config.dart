@@ -118,6 +118,8 @@ import 'package:flutter_app_template/core/services/theme/domain/usecase/save_the
     as _i987;
 import 'package:flutter_app_template/core/services/theme/presentation/bloc/theme_bloc.dart'
     as _i369;
+import 'package:flutter_app_template/features/welcome/presentation/bloc/welcome_bloc.dart'
+    as _i53;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
@@ -301,6 +303,12 @@ extension GetItInjectableX on _i174.GetIt {
         getColorsUseCase: gh<_i162.GetColorsUseCase>(),
         syncColorsUseCase: gh<_i613.SyncColorsUseCase>(),
         themeBloc: gh<_i369.ThemeBloc>(),
+      ),
+    );
+    gh.lazySingleton<_i53.WelcomeBloc>(
+      () => _i53.WelcomeBloc(
+        colorBloc: gh<_i773.ColorBloc>(),
+        translationBloc: gh<_i447.TranslationBloc>(),
       ),
     );
     return this;
