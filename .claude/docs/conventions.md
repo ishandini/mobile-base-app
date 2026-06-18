@@ -29,25 +29,33 @@
 - Use cases: `<Action><Feature>UseCase` (e.g., `GetColorsUseCase`, `SyncTranslationsUseCase`)
 - Modules: `PascalCase` + `Module` suffix (e.g., `NetworkModule`, `AppModule`)
 
-### Part Files
+### Widget Placement — 4-Tier Rule
 
-Pages that are too large may be split using `part` / `part of` directives. Rules:
+Decide where a widget lives at the moment you extract it. Never move things retroactively based on file length.
 
-- Part files live in the **same folder** as the library file they belong to (e.g. both in `pages/`).
-- Part filenames must **not** start with `_`. A leading `_` signals library-private in Dart — it is
-  confusing and incorrect for a `part` file that contains named public classes.
-  ```dart
-  // CORRECT
-  part 'slider_content.dart';
-  part 'animated_detail_pane.dart';
+| Widget | Where |
+|---|---|
+| Page shell — `_PageView`, BlocBuilder wrapper, state switch | Private `_Class` in the same page file |
+| Named widget consciously extracted for one page | `pages/local_widgets/<name>.dart` |
+| Used by 2+ pages within the same feature | `feature/presentation/widgets/<name>.dart` |
+| Used app-wide | `lib/core/widgets/<name>.dart` |
 
-  // WRONG — underscore prefix is misleading
-  part '_slider_content.dart';
-  part '_animated_detail_pane.dart';
-  ```
-- Part files use `part of '<library_file>.dart';` at the top (not the `library` identifier form).
-- Widget files under `features/.../widgets/` are **standalone** public files, not `part of` anything,
-  even if they are only used by one page. Use folder placement to communicate scope, not file privacy.
+**Decision rule:** if it's worth naming and pulling out of the page's build method, it goes in `local_widgets/` from day one — not inline first, then moved later.
+
+```
+presentation/
+  pages/
+    my_feature_page.dart
+    local_widgets/
+      slider_content.dart
+      animated_detail_pane.dart
+  widgets/
+    property_card.dart        ← shared across multiple pages in this feature
+```
+
+Widgets in `local_widgets/` are **standalone public files** with regular imports — no `part`/`part of`. Folder placement communicates scope; no need for `_` prefix privacy.
+
+**Do not use `part`/`part of` for widget extraction.** Standalone files are simpler, independently analyzable, and avoid the shared-library-namespace footgun.
 
 ### Enums
 
