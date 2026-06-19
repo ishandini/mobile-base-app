@@ -4,7 +4,6 @@ import 'package:flutter_app_template/core/errors/failure.dart';
 import 'package:flutter_app_template/core/network/responses/base_response.dart';
 import 'package:flutter_app_template/core/network/safe_api_call.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fpdart/fpdart.dart';
 
 void main() {
   group('safeApiCall', () {
