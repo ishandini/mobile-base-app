@@ -11,7 +11,103 @@
       "en": "Theme",
       "si": "තේමාව",
       "ta": "கருப்பொருள்"
+    },
+    {
+      "key": "api_exception_lbl_connection_error",
+      "en": "Connection Error",
+      "si": "Connection Error",
+      "ta": "Connection Error"
+    },
+    {
+      "key": "api_exception_lbl_unable_to_connect",
+      "en": "Unable to connect. Please check your internet connection.",
+      "si": "Unable to connect. Please check your internet connection.",
+      "ta": "Unable to connect. Please check your internet connection."
+    },
+    {
+      "key": "api_exception_lbl_request_timeout",
+      "en": "Request Timeout",
+      "si": "Request Timeout",
+      "ta": "Request Timeout"
+    },
+    {
+      "key": "api_exception_lbl_took_too_long",
+      "en": "The request took too long. Please try again.",
+      "si": "The request took too long. Please try again.",
+      "ta": "The request took too long. Please try again."
+    },
+    {
+      "key": "api_exception_lbl_something_wrong_400",
+      "en": "Bad Request",
+      "si": "Bad Request",
+      "ta": "Bad Request"
+    },
+    {
+      "key": "api_exception_lbl_request_incorrect",
+      "en": "The request contains invalid data. Please check and try again.",
+      "si": "The request contains invalid data. Please check and try again.",
+      "ta": "The request contains invalid data. Please check and try again."
+    },
+    {
+      "key": "api_exception_lbl_unauthorized_401",
+      "en": "Unauthorized",
+      "si": "Unauthorized",
+      "ta": "Unauthorized"
+    },
+    {
+      "key": "api_exception_lbl_log_in_required",
+      "en": "You need to log in to continue.",
+      "si": "You need to log in to continue.",
+      "ta": "You need to log in to continue."
+    },
+    {
+      "key": "api_exception_lbl_access_denied_403",
+      "en": "Access Denied",
+      "si": "Access Denied",
+      "ta": "Access Denied"
+    },
+    {
+      "key": "api_exception_lbl_no_permission",
+      "en": "You do not have permission to access this resource.",
+      "si": "You do not have permission to access this resource.",
+      "ta": "You do not have permission to access this resource."
+    },
+    {
+      "key": "api_exception_lbl_not_found_404",
+      "en": "Not Found",
+      "si": "Not Found",
+      "ta": "Not Found"
+    },
+    {
+      "key": "api_exception_lbl_couldnt_find_page",
+      "en": "The requested resource could not be found.",
+      "si": "The requested resource could not be found.",
+      "ta": "The requested resource could not be found."
+    },
+    {
+      "key": "api_exception_lbl_server_error_500",
+      "en": "Server Error",
+      "si": "Server Error",
+      "ta": "Server Error"
+    },
+    {
+      "key": "api_exception_lbl_something_wrong_end",
+      "en": "Something went wrong on our end. Please try again later.",
+      "si": "Something went wrong on our end. Please try again later.",
+      "ta": "Something went wrong on our end. Please try again later."
+    },
+    {
+      "key": "api_exception_lbl_unexpected_error",
+      "en": "Unexpected Error",
+      "si": "Unexpected Error",
+      "ta": "Unexpected Error"
+    },
+    {
+      "key": "api_exception_lbl_try_again",
+      "en": "An unexpected error occurred. Please try again.",
+      "si": "An unexpected error occurred. Please try again.",
+      "ta": "An unexpected error occurred. Please try again."
     }
   ],
-  "sync_date_time": "18/06/2026 00:01"
+  "sync_date_time": "19/06/2026 00:00"
 }

@@ -790,6 +790,32 @@ Used inside `ProjectProgressTile` on `MyPropertyPage` — not tied to a specific
 
 `si` and `ta` values are intentionally empty — app is English-only.
 
+### api_exception keys (ErrorInterceptor)
+
+Used by `ErrorInterceptor` to resolve localized titles and messages from `DioException`s.
+Keys are resolved via `AppLocalizations` injected into `ErrorInterceptor`.
+
+| Key | en value |
+|-----|----------|
+| `api_exception_lbl_connection_error` | `"Connection Error"` |
+| `api_exception_lbl_unable_to_connect` | `"Unable to connect. Please check your internet connection."` |
+| `api_exception_lbl_request_timeout` | `"Request Timeout"` |
+| `api_exception_lbl_took_too_long` | `"The request took too long. Please try again."` |
+| `api_exception_lbl_something_wrong_400` | `"Bad Request"` |
+| `api_exception_lbl_request_incorrect` | `"The request contains invalid data. Please check and try again."` |
+| `api_exception_lbl_unauthorized_401` | `"Unauthorized"` |
+| `api_exception_lbl_log_in_required` | `"You need to log in to continue."` |
+| `api_exception_lbl_access_denied_403` | `"Access Denied"` |
+| `api_exception_lbl_no_permission` | `"You do not have permission to access this resource."` |
+| `api_exception_lbl_not_found_404` | `"Not Found"` |
+| `api_exception_lbl_couldnt_find_page` | `"The requested resource could not be found."` |
+| `api_exception_lbl_server_error_500` | `"Server Error"` |
+| `api_exception_lbl_something_wrong_end` | `"Something went wrong on our end. Please try again later."` |
+| `api_exception_lbl_unexpected_error` | `"Unexpected Error"` |
+| `api_exception_lbl_try_again` | `"An unexpected error occurred. Please try again."` |
+
+`si` and `ta` values are English placeholders pending translation.
+
 ### installment_overview_card keys
 
 Used inside `InstallmentOverviewCard` widget — not tied to a specific screen.
