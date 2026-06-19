@@ -3,6 +3,7 @@ import 'package:flutter_app_template/core/config/env_config.dart';
 import 'package:flutter_app_template/core/network/api_client.dart';
 import 'package:flutter_app_template/core/network/interceptors/error_interceptor.dart';
 import 'package:flutter_app_template/core/network/interceptors/security_interceptor.dart';
+import 'package:flutter_app_template/core/services/locale/app_localizations.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:requests_inspector/requests_inspector.dart';
@@ -10,7 +11,7 @@ import 'package:requests_inspector/requests_inspector.dart';
 @module
 abstract class NetworkModule {
   @lazySingleton
-  Dio dio() {
+  Dio dio(AppLocalizations localizations) {
     final dio = Dio(
       BaseOptions(
         baseUrl: EnvConfig.apiUrl,
@@ -28,7 +29,7 @@ abstract class NetworkModule {
 
     dio.interceptors.addAll([
       SecurityInterceptor(secretKey: EnvConfig.secretKey),
-      ErrorInterceptor(),
+      ErrorInterceptor(localizations: localizations),
       if (EnvConfig.enableLogging)
         PrettyDioLogger(
           requestHeader: true,

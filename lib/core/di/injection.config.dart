@@ -148,7 +148,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i809.FirebaseFunctions>(
       () => firebaseModule.firebaseFunctions,
     );
-    gh.lazySingleton<_i361.Dio>(() => networkModule.dio());
     gh.lazySingleton<_i792.AppInitializationService>(
       () => _i792.AppInitializationService(),
     );
@@ -174,6 +173,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i872.NotificationsDataSource>(
       () => _i181.NotificationsDataSourceImpl(gh<_i892.FirebaseMessaging>()),
+    );
+    gh.lazySingleton<_i361.Dio>(
+      () => networkModule.dio(gh<_i572.AppLocalizations>()),
     );
     gh.lazySingleton<_i501.TranslationLocalDataSource>(
       () => _i26.TranslationLocalDataSourceImpl(),
