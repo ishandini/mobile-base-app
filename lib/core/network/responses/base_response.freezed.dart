@@ -11,6 +11,7 @@ part of 'base_response.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$BaseResponse<T> {
 
@@ -21,6 +22,8 @@ mixin _$BaseResponse<T> {
 @pragma('vm:prefer-inline')
 $BaseResponseCopyWith<T, BaseResponse<T>> get copyWith => _$BaseResponseCopyWithImpl<T, BaseResponse<T>>(this as BaseResponse<T>, _$identity);
 
+  /// Serializes this BaseResponse to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -28,7 +31,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is BaseResponse<T>&&(identical(other.status, status) || other.status == status)&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other.data, data));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,status,message,const DeepCollectionEquality().hash(data));
 
@@ -205,11 +208,14 @@ return $default(_that.status,_that.message,_that.data);case _:
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class _BaseResponse<T> extends BaseResponse<T> {
   const _BaseResponse({this.status, this.message, this.data}): super._();
-  
+  factory _BaseResponse.fromJson(Map<String, dynamic> json) => _$BaseResponseFromJson(
+    json,
+    (data) => data as T,
+  );
 
 @override final  String? status;
 @override final  String? message;
@@ -221,14 +227,17 @@ class _BaseResponse<T> extends BaseResponse<T> {
 @pragma('vm:prefer-inline')
 _$BaseResponseCopyWith<T, _BaseResponse<T>> get copyWith => __$BaseResponseCopyWithImpl<T, _BaseResponse<T>>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$BaseResponseToJson<T>(this, (data) => data as Object?);
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _BaseResponse<T>&&(identical(other.status, status) || other.status == status)&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other.data, data));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,status,message,const DeepCollectionEquality().hash(data));
 
