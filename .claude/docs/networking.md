@@ -64,7 +64,9 @@ while still throwing on genuine 5xx server errors.
    - Rejects with `HashValidationException` on mismatch
 
 2. **`ErrorInterceptor`** — `lib/core/network/interceptors/error_interceptor.dart`
-   - Converts any `DioException` → `APIException` via `APIException.initWithException(err)`
+   - Injects `AppLocalizations` via constructor (resolved automatically by injectable)
+   - Passes `HashValidationException` through untouched via `handler.next(err)`
+   - Resolves localized `title` and `message` from `DioException` type / status code
    - Logs `logger.e(...)` with title and message
    - Re-rejects with an `APIException`-wrapped `DioException`
 
@@ -216,13 +218,16 @@ final items = PgResponse.from(raw).dataList(ItemModel.fromJson);
 
 Use for endpoints that return the `{ status, message, data: T }` envelope where `T` is a known Dart model. In `ApiClient`, declare the return type as `BaseResponse<MyModel>` and use `safeApiCall` in the repository.
 
-```dart
-class BaseResponse<T> {
-  String? status;
-  String? message;
-  T? data;
+`BaseResponse<T>` is a `@freezed` class — fields are immutable:
 
-  bool isSuccess() => status?.toLowerCase() == 'success';
+```dart
+@freezed
+class BaseResponse<T> with _$BaseResponse<T> {
+  const BaseResponse._();
+  const factory BaseResponse({String? status, String? message, T? data}) = _BaseResponse<T>;
+  factory BaseResponse.fromJson(Map<String, dynamic> json, T Function(Object?) fromJsonT)
+      => _$BaseResponseFromJson(json, fromJsonT);
+  bool get isSuccess => status?.toLowerCase() == 'success';  // getter, not method
 }
 ```
 
@@ -246,22 +251,29 @@ Currently used by: `beneficiaries` (example endpoint).
 **File:** `lib/core/network/safe_api_call.dart`
 
 Wrapper used inside repository implementations to handle the response envelope and exception
-conversion uniformly.
+conversion uniformly. Returns `Either<Failure, T>` — never throws.
 
 ```dart
-Future<T?> safeApiCall<T>(Future<BaseResponse<T>> Function() apiCall) async {
+Future<Either<Failure, T>> safeApiCall<T>(
+  Future<BaseResponse<T>> Function() call,
+) async {
   try {
-    final response = await apiCall();
-    if (response.isSuccess()) {
-      return response.data;
-    } else {
-      throw APIException.initWithResponse(response);
+    final response = await call();
+    if (response.isSuccess) {          // getter, no parentheses
+      final data = response.data;
+      if (data == null) return Left(APIFailure.fromException(
+        const APIException(message: 'No data in response', title: null),
+      ));
+      return Right(data);
     }
+    return Left(APIFailure.fromException(APIException.initWithResponse(response)));
+  } on DioException catch (e) {
+    final ex = e.error is APIException ? e.error as APIException : APIException.initWithException(e);
+    return Left(APIFailure.fromException(ex));
+  } on APIException catch (e) {
+    return Left(APIFailure.fromException(e));
   } catch (e) {
-    if (e is DioException && e.error is APIException) {
-      throw e.error as APIException;
-    }
-    throw APIException.initWithException(e);
+    return Left(APIFailure.fromException(APIException(message: e.toString(), title: null)));
   }
 }
 ```
@@ -269,10 +281,13 @@ Future<T?> safeApiCall<T>(Future<BaseResponse<T>> Function() apiCall) async {
 Usage in a repository implementation:
 
 ```dart
-final result = await safeApiCall(() => apiClient.beneficiaries());
+// Direct Either result — no wrapping in safeRepoCall needed
+final result = await safeApiCall(() => _apiClient.beneficiaries());
+return result.map((model) => model.toEntity());
 ```
 
-Returns `T?` (unwrapped `data`). Throws `APIException` on any failure.
+Returns `Right(T)` on success with non-null data. Returns `Left(APIFailure)` on any failure.
+`safeRepoCall` is unchanged — still used for non-`BaseResponse` datasources (Firebase, etc.).
 
 ---
 
@@ -287,18 +302,21 @@ Returns `T?` (unwrapped `data`). Throws `APIException` on any failure.
 
 ### APIException constructors
 
+`APIException` is a pure data class — no localization logic, no DI dependencies.
+
 ```dart
 // From a BaseResponse (non-success status)
-APIException.initWithResponse(response)
+APIException.initWithResponse(response)  // reads response.message, title = null
 
-// From a caught exception (DioException, generic, etc.)
-APIException.initWithException(exception)
+// From a caught exception (DioException or generic)
+APIException.initWithException(exception)  // message = e.message ?? e.toString(), title = null
 
 // Direct construction
 APIException(message: '...', title: '...')
 ```
 
-`initWithException` maps HTTP status codes to localized messages using `AppLocalizations`:
+Localized titles and messages are resolved by `ErrorInterceptor` (not `APIException`).
+`ErrorInterceptor` maps `DioException` type / HTTP status codes to translation keys:
 - `400` → `api_exception_lbl_something_wrong_400` / `api_exception_lbl_request_incorrect`
 - `401` → `api_exception_lbl_unauthorized_401` / `api_exception_lbl_log_in_required`
 - `403` → `api_exception_lbl_access_denied_403` / `api_exception_lbl_no_permission`
