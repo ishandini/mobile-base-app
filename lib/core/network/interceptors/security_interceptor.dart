@@ -80,7 +80,8 @@ class SecurityInterceptor extends Interceptor {
       logger.e('Error verifying response hash: $e');
       final dioError = DioException(
         requestOptions: response.requestOptions,
-        error: 'Hash verification error: $e',
+        error: HashValidationException('Hash verification error: $e',
+            response: response),
         response: response,
       );
       return handler.reject(dioError);
